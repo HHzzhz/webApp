@@ -1,4 +1,5 @@
 import Config from './config';
+import Message from 'ant-design-vue/lib/message';
 export default function ({ $axios, redirect}, inject) {
   const instance = $axios.create({
     baseUrl: Config.host,
@@ -39,15 +40,22 @@ export default function ({ $axios, redirect}, inject) {
   // 处理返回结果
   instance.interceptors.response.use(
     res => {
-      return res.data
+      if (res.code === 0 ){
+        return res.data
+      } else {
+        if(process.client) {
+          Message.error(res.data.message)
+        }
+        return res.data
+      }
     },
     error => {
       const status = error.response && error.response.status
       if (status === 401) {
         // 重定向到登录页面
         redirect('/login')
-      } else if (status === 404) {
-        redirect('/404')
+      } else {
+        Message.error("服务器错误, 请联系管理员:info@ashago.com")
       }
       return Promise.reject(error)
     }

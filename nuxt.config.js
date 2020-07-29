@@ -21,6 +21,9 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
+    script: [
+      { src: '/js/facebook.js' }
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
@@ -35,7 +38,8 @@ module.exports = {
     // for snow theme
     'quill/dist/quill.snow.css',
     // for bubble theme
-    'quill/dist/quill.bubble.css'
+    'quill/dist/quill.bubble.css',
+    '~/assets/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -56,9 +60,12 @@ module.exports = {
     proxy: true
   },
   proxy: {
-    '/api': {
-      target: 'http://localhost:9090'
-    }
+    // '/api': {
+    //   target: 'http://ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com:80'
+    // },
+    // '/user': {
+    //   target: 'http://ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com:80'
+    // }
   },
   /*
   ** Auto import components
