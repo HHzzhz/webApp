@@ -22,7 +22,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     script: [
-      { src: '/js/facebook.js' }
+      { src: '/js/facebook.js' },
+      { src: '/js/wx.js' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -57,14 +58,20 @@ module.exports = {
     host_env: process.env.CODE_ENV
   },
   axios: {
-    proxy: true
+    proxy: false,
   },
   proxy: {
+    '/api': {
+      target: '//ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+    },
+    '/user': {
+      target: '//ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+    },
     // '/api': {
-    //   target: 'http://ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com:80'
+    //   target: '//yapi.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com/mock/25'
     // },
     // '/user': {
-    //   target: 'http://ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com:80'
+    //   target: '//yapi.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com/mock/25'
     // }
   },
   /*
