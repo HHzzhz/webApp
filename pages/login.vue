@@ -12,6 +12,19 @@
           placeholder="Username"
           size="large"
         >
+        <!-- <a-input
+          v-decorator="[
+          'email',
+          {
+            rules: [
+              { type: 'email', message: 'The input is not valid E-mail!' },
+              { required: true, message: 'Please input your email!' }
+            ]
+          },
+        ]"
+          placeholder="email"
+          size="large"
+        > -->
           <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
         </a-input>
       </a-form-item>
@@ -37,7 +50,7 @@
         <span>
           Other login methods
           <a-icon class="icon" type="facebook" @click="fbLogin"/>
-          <a-icon class="icon" style="font-size: 24px" type="wechat" />
+          <a-icon class="icon" style="font-size: 24px" @click="wxLogin" type="wechat" />
         </span>
         <a-button class="register" type="link" @click="handleToRegister">Register</a-button>
       </div>
@@ -79,8 +92,10 @@
         const { getFieldError, isFieldTouched } = this.form;
         return isFieldTouched('token') && getFieldError('token');
       },
+      wxLogin() {
+
+      },
       fbLogin() {
-        console.log(FB, '----');
         FB.login(function(response) {
             if (response.authResponse) {
                 console.log('Welcome!  Fetching your information.... ');
@@ -140,13 +155,14 @@
             userId: values.userName
           }
         }).then(res => {
-          this.loading = false;
           if (res.code === 0) {
             Cookie.set('_t', res.data.t);
             this.$store.commit('setToken', res.data.t);
             this.$router.push('/')
           }
-        })
+        }).finally(data => {
+          this.loading = false;
+        });
       }
     }
   }
