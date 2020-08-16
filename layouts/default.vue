@@ -4,7 +4,10 @@
         <div class="header-container">
           <span class="header-left" @click="goHome">
             <img class="header-logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
-            &nbsp;&nbsp;ASHA GO
+            <span class="logo-desc">
+              <span>ASHA GO</span>
+              <span class="desc">Your China Platform</span>
+            </span>
           </span>
           <span class="header-right">
             <a-button @click="sign">Sign in / Login</a-button>
@@ -16,12 +19,24 @@
             <nuxt-link to="/my" class="menu-item">Food & Drinks</nuxt-link>
             <!-- <nuxt-link to="/pageb" class="menu-item">Shopping</nuxt-link> -->
             <nuxt-link to="/pageb" class="menu-item">Travel</nuxt-link>
-            <!-- <nuxt-link to="/pageb" class="menu-item">Language</nuxt-link> -->
+            <nuxt-link to="/pageb" class="menu-item">Language</nuxt-link>
             <nuxt-link to="/pageb" class="menu-item">Community</nuxt-link>
             <nuxt-link to="/pageb" class="menu-item">Service</nuxt-link>
-            <nuxt-link to="/edit" class="menu-item">About Us</nuxt-link>
+            <a-dropdown>
+              <a class="ant-dropdown-link menu-item" @click="e => e.preventDefault()">
+                About Us <a-icon type="down" />
+              </a>
+              <a-menu slot="overlay">
+                <a-menu-item>
+                  <nuxt-link to="/pageb" class="menu-item">Our Team</nuxt-link>
+                </a-menu-item>
+                <a-menu-item>
+                  <nuxt-link to="/pageb" class="menu-item">Contact Us</nuxt-link>
+                </a-menu-item>
+              </a-menu>
+            </a-dropdown>
           </nav>
-          <a-input-search class ='search' placeholder="input search text" v-model="searchValue" enter-button @search="onSearch" @pressEnter="onSearch"/>
+          <a-input-search class ='search' placeholder="search" v-model="searchValue" enter-button @search="onSearch" @pressEnter="onSearch"/>
         </div>
       </div>
       <div class="content">
@@ -141,6 +156,9 @@ html {
   color: #fff;
   .menu {
     line-height: 40px;
+    a:hover {
+      color: #ccc;
+    }
   }
   .search {
     margin-right: 40px ;
@@ -157,10 +175,18 @@ html {
       background-color: #8d040c;
       border: none;
     }
-   
   }
 }
-
+.ant-dropdown-menu {
+  background-color: #ac4448;
+  .ant-dropdown-menu-item > a {
+    color: #fff;
+  }
+  .ant-dropdown-menu-item:hover {
+    background-color: #ac4448;
+    color: #cccccc;
+  }
+}
 .header-container {
   height: 100px;
   width: 100%;
@@ -170,12 +196,29 @@ html {
   color: #ac4448;
   display: flex;
   justify-content:space-between;
+  .header-left {
+    vertical-align: middle;
+    display: flex;
+    .logo-desc {
+      margin-top: -18px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left: 20px;
+      .desc {
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    }
+
+  }
   .header-right {
      align-self: center;
      margin-right: 140px;
      .ant-btn {
        color: #ac4448;
        border-color: #ac4448;
+       margin-top: -15px;
      }
   }
   .header-logo {
