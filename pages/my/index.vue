@@ -14,16 +14,6 @@
         <!--</a-dropdown>-->
       </div>
       <div class="userName">hello Tom</div>
-      <div class="follow">
-        <div class="item">
-          <div class="num">1</div>
-          <div class="name">Follows</div>
-        </div>
-        <div class="item">
-          <div class="num">0</div>
-          <div class="name">Following</div>
-        </div>
-      </div>
     </div>
     <div class="bottom">
       <ul class="list">
@@ -32,7 +22,6 @@
         <li @click="handleClickItem(3)" :class="active === 3 ? 'active' : ''">Likes</li>
         <li @click="handleClickItem(4)" :class="active === 4 ? 'active' : ''">Change/Reset Password</li>
         <li @click="handleClickItem(5)" :class="active === 5 ? 'active' : ''">Newsletter</li>
-        <li @click="handleClickItem(6)" :class="active === 6 ? 'active' : ''">Find Password</li>
       </ul>
     </div>
     <client-only>
@@ -68,7 +57,6 @@
   import Notifications from './components/Notifications.vue';
   import ResetPwd from './components/ResetPwd.vue';
   import Newsletter from './components/Newsletter.vue';
-  import FindPwd from './components/FindPwd.vue';
   import Likes from './components/Likes.vue';
   export default {
     head() {
@@ -85,7 +73,6 @@
       Notifications,
       ResetPwd,
       Newsletter,
-      FindPwd,
       Likes
     },
     data() {
@@ -181,7 +168,7 @@
         .userName {
           text-align: center;
           margin: 0 auto;
-          border-bottom: 2px solid #8D050B;
+          // border-bottom: 2px solid #8D050B;
           line-height: 40px;
           font-size: 30px;
           color: #8D050B;
