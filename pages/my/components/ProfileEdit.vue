@@ -21,10 +21,10 @@
             { rules: [{ required: true, message: 'Please Choose your Gender' }] },
           ]"
         >
-          <a-radio value="female">
+          <a-radio value="FEMALE">
             Female
           </a-radio>
-          <a-radio value="male">
+          <a-radio value="MALE">
             Male
           </a-radio>
         </a-radio-group>
@@ -178,7 +178,7 @@ import moment from 'moment';
           if (res.code == 0) {
             this.info = res.data
           } else {
-            this.data = res.info.data
+            this.formData = res.info.data
           }
         })
       },
@@ -194,7 +194,6 @@ import moment from 'moment';
         });
       },
       handleEdit (values) {
-        debugger;
         values.birthday =  moment(values.birthday).format('YYYY-MM-DD');
         this.$Server({
           url: '/user/update-profile',
@@ -204,7 +203,12 @@ import moment from 'moment';
             ...values,
           }
         }).then(res => {
-          this.$emit('ok')
+          if(res.code === '0') {
+            this.$message.info(res.msg);
+            this.$emit('ok')
+          } else {
+            this.$message.error(res.msg);
+          }
         })
       }
     }

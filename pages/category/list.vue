@@ -132,7 +132,6 @@ export default {
   methods: {
     getData(key, callback) {
       this.$Server({
-        //url: "http://localhost:8080/blog/get-blog-list",
         url: "/blog/get-blog-list",
         method: "post",
         data: {
@@ -215,7 +214,7 @@ export default {
   height: 80%;
   align-items: center;
   text-align: center;
-  margin-bottom: -10%;
+  margin-bottom: -12%;
   .img {
     display: inline-block;
     padding-right: 52px;
@@ -228,6 +227,7 @@ export default {
   .content {
     display: inline-block;
     width: 35%;
+    text-align: left;
     h1 {
       color: #434e59;
       font-size: 60px;
@@ -240,7 +240,6 @@ export default {
       line-height: 20px;
       margin-bottom: 24px;
       text-align: left;
-      word-break: break-all;
     }
     .desc {
       color: rgba(0, 0, 0, 0.45);
