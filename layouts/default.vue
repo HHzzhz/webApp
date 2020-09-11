@@ -13,12 +13,12 @@
             <a-button @click="signHandler" v-show="!loginFlag">Sign up / Login</a-button>
             <span v-show="!!loginFlag">
               <a-avatar :src="$store.state.userInfo.avatar || avatarImg" @click="goInfo"></a-avatar>
-              <span>{{$store.state.userInfo.userName || userName}}</span>
+              <span class="user-name">{{$store.state.userInfo.userName || userName}}</span>
               <a-button type="link" @click="logoutHandler" ghost>Logout</a-button>
             </span>
           </span>
         </div>
-        <div class="menu-container">
+        <div class="menu-container" id="menuContainer">
           <nav class="menu">
             <nuxt-link to="/category/daily?category=daily" class="menu-item">Daily Life</nuxt-link>
             <nuxt-link to="/category/food?category=food" class="menu-item">Food & Drinks</nuxt-link>
@@ -33,10 +33,10 @@
               </a>
               <a-menu slot="overlay">
                 <a-menu-item>
-                  <nuxt-link to="/pageb" class="menu-item">Our Team</nuxt-link>
+                  <nuxt-link to="/aboutUs" class="menu-item">Our Team</nuxt-link>
                 </a-menu-item>
                 <a-menu-item>
-                  <nuxt-link to="/pageb" class="menu-item">Contact Us</nuxt-link>
+                  <nuxt-link to="/contactUs" class="menu-item">Contact Us</nuxt-link>
                 </a-menu-item>
               </a-menu>
             </a-dropdown>
@@ -52,22 +52,22 @@
           <div class="connet">
           <ul class="footer-link">
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <nuxt-link to="/aboutUs" class="nav-link">
                 <p>Who are we</p>
                 <span>我们是谁</span>
-              </a>
+              </nuxt-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+               <nuxt-link to="/contactUs" class="nav-link">
                 <p>Business inquiries </p>
                 <span>商业合作</span>
-              </a>
+               </nuxt-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <nuxt-link to="/contactUs" class="nav-link">
                 <p>Write for us</p>
                 <span>投稿</span>
-              </a>
+              </nuxt-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">
@@ -75,15 +75,12 @@
                 <span>用户协议</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <p>Privacy</p>
-                <span>用户协议</span>
-              </a>
-            </li>
           </ul>
           <div class="footer-social">
-            <a href=" https://www.youtube.com/channel/UCrWdKovbA8LkG3TKOYURihQ" target="_blank">
+            <!-- <a href=" https://www.youtube.com/channel/UCrWdKovbA8LkG3TKOYURihQ" target="_blank">
+              <a-icon type="facebook" class="social-icon"/>
+            </a> -->
+            <a href=" https://www.facebook.com/ashagoplatform/" target="_blank">
               <a-icon type="facebook" class="social-icon"/>
             </a>
             <a href="https://www.linkedin.com/company/asha-go" target="_blank">
@@ -115,6 +112,18 @@ export default {
     }
   },
   mounted() {
+    window.addEventListener("scroll",()=>{
+      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let offsetTop = document.querySelector('#menuContainer').offsetTop;
+        console.log(offsetTop,scrollTop, 'xxx====');
+        if (scrollTop > offsetTop) {
+            document.querySelector('#menuContainer').style.position="fixed";
+            document.querySelector('#menuContainer').style.top="0";
+        } else {
+            document.querySelector('#menuContainer').style.position="";
+            document.querySelector('#menuContainer').style.top="";
+        }
+    })
     if(this.$store.state.token){
         this.getUserInfo();
         this.loginFlag = true;
@@ -198,12 +207,14 @@ html {
   background-color: #fff;
   margin: 0px;
   padding: 0px;
-  position: fixed;
-  top:0px;
+  // position: fixed;
+  // top:0px;
   width: 100%;
   z-index: 999;
 }
 .menu-container {
+  width: 100%;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -218,6 +229,7 @@ html {
   .search {
     margin-right: 40px ;
     width: 200px;
+    font-size: 16px;
     color: #fff;
     .ant-input {
       border: none;
@@ -229,6 +241,7 @@ html {
     .ant-btn-primary {
       background-color: #8d040c;
       border: none;
+      border-radius: 0px;
     }
   }
 }
@@ -275,6 +288,9 @@ html {
        border-color: #ac4448;
        margin-top: -15px;
      }
+     .user-name {
+       font-size: 16px;
+     }
   }
   .header-logo {
     object-position: 50% 50%;
@@ -292,11 +308,11 @@ html {
   display: block;
   height: 100%;
   overflow: hidden;
-  margin-top: 150px ;
 }
 
 .footer {
   padding: 0px;
+  margin-top: 10px;
   .footer-container {
     background-color: #8d040c;
     color: #fff;

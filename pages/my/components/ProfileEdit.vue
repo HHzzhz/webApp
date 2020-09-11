@@ -30,7 +30,7 @@
             Male
           </a-radio>
           <a-radio value="OTHER">
-            OTHER
+            Other
           </a-radio>
         </a-radio-group>
       </a-form-item>
@@ -44,7 +44,7 @@
             rules: [{ required: true, message: 'Please input your nationality' }]
           },
         ]"
-          placeholder="What is your atianationality?"
+          placeholder="What is your nationality?"
         />
       </a-form-item>
       <a-form-item
@@ -252,7 +252,7 @@ import moment from 'moment';
           }
         }).then(res => {
           if(res.code === '0') {
-            this.$message.info(res.msg);
+            this.$message.success(res.msg);
             this.$emit('ok')
           } else {
             this.$message.error(res.msg);

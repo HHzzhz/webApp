@@ -10,10 +10,13 @@
         @slideChangeTransitionStart="onSwiperSlideChangeTransitionStart"
       >
         <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index">
-          <img :src="item.url" :alt="'banner'+index" >
-          <div class="text">
-            <p>{{item.text}}</p>
-          </div>
+          <span @click="goDetail(item.blogId)">
+            <img :src="item.cover" :alt="'banner'+index" >
+            <div class="text">
+              <p>{{item.recommendTitle}}</p>
+            </div>
+          </span>
+
         </swiper-slide>
         <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
         <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
@@ -31,12 +34,15 @@
       </a-card>
      </div>
       <div class="category" v-for="(item, index) in categoryData" :key="'categoryData' + index">
-        <a-divider class="">{{categoryDesc[index].title}} </a-divider>
+        <a-divider class="categoryTitle">
+          <nuxt-link :to="'/category/' + categoryDesc[index].text+ '?category='+ categoryDesc[index].text" >
+            {{categoryDesc[index].title}}
+          </nuxt-link>
+        </a-divider>
         <nuxt-link :to="'/category/' + categoryDesc[index].text+ '?category='+ categoryDesc[index].text" class="more">MORE&nbsp;&nbsp;<a-icon type="double-right" /></nuxt-link>
         <p class="card-container" v-for="i in (item.length/3)" :key="i">
           <a-card hoverable
                   class="card"
-
                   v-for="j in 3"
                   :key="'lastest'+ i + j"
                   @click="goDetail(item[(i-1)*3 + j -1].blogId)">
@@ -70,7 +76,11 @@ export default {
           centeredSlides: true,
           spaceBetween: 10,
           effect: 'fade',
-          autoplay: 3000,
+           autoplay: {
+            delay: 2000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+         },
           pagination: {
             el: '.swiper-pagination',
             dynamicBullets: true,
@@ -82,26 +92,26 @@ export default {
           }
         },
         bannerData: [
-          {
-            url: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Is%20China%20a%20safe%20country%20for%20travellers.jpg',
-            text: 'Is China a safe country for travellers?'
-          },
-          {
-            url: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Growing%20up%20as%20a%20woman%20in%20China.jpg',
-            text: 'Growing up as a woman in China'
-          },
-          {
-            url: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-The%20most%20famous%20Chinese%20curse%20words.JPG',
-            text: 'The most famous Chinese curse words'
-          },
-          {
-            url: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Movies%20to%20improve%20your%20Chinese.jpg',
-            text: 'Movies to improve your Chinese'
-          },
-          {
-            url: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Why%20you%20should%20travel%20solo%20in%20China.jpg',
-            text: 'Why you should travel solo in China?'
-          },
+          // {
+          //   cover: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Is%20China%20a%20safe%20country%20for%20travellers.jpg',
+          //   recommendTitle: 'Is China a safe country for travellers?'
+          // },
+          // {
+          //   cover: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Growing%20up%20as%20a%20woman%20in%20China.jpg',
+          //   recommendTitle: 'Growing up as a woman in China'
+          // },
+          // {
+          //   cover: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-The%20most%20famous%20Chinese%20curse%20words.JPG',
+          //   recommendTitle: 'The most famous Chinese curse words'
+          // },
+          // {
+          //   cover: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Movies%20to%20improve%20your%20Chinese.jpg',
+          //   recommendTitle: 'Movies to improve your Chinese'
+          // },
+          // {
+          //   cover: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/Featured%20articles%20%E6%8E%A8%E8%8D%90%E6%96%87%E7%AB%A0/images/web%E9%A6%96%E9%A1%B5-Why%20you%20should%20travel%20solo%20in%20China.jpg',
+          //   recommendTitle: 'Why you should travel solo in China?'
+          // },
         ],
         categoryData: {
           dailyData: [],
@@ -150,7 +160,8 @@ export default {
     let categoryList = ['daily', 'food', 'travel']
     categoryList.forEach(item => {
       this.getData(item);
-    })
+    });
+    this.getRecommend();
   },
 
 
@@ -158,6 +169,16 @@ export default {
   methods: {
     getImgUrl(i) {
       return `${baseUrl}abstract0${i + 1}.jpg`;
+    },
+    getRecommend() {
+      this.$Server({
+        method: "GET",
+        url: "/recommend/list"
+      }).then((res) => {
+        if(res.code === '0'){
+          this.bannerData = res.data.recommendList;
+        }
+      });
     },
     search(value) {
       this.$router.push({
@@ -244,6 +265,7 @@ export default {
   .city-container {
     display: flex;
     margin-top: 30px;
+    margin-bottom: 25px;
     justify-content: space-around;
     .card-img  {
       width: 150px;
@@ -252,6 +274,14 @@ export default {
   }
   .category {
     position: relative;
+    .categoryTitle {
+      margin-bottom: 28px;
+      font-size: 20px;
+      cursor: pointer;
+      a {
+        color: #000;
+      }
+    }
     .more {
         position:absolute;
         bottom: 10px;
