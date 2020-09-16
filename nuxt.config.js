@@ -66,13 +66,13 @@ module.exports = {
   },
   proxy: {
     '/': {
-      target: '//ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+      target: '//ashago-api.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
     },
     '/api': {
-      target: '//ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+      target: '//ashago-api.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
     },
     '/user': {
-      target: '//ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+      target: '//ashago-api.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
     },
     // '/api': {
     //   target: '//yapi.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com/mock/25'
