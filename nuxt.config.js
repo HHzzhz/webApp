@@ -18,13 +18,14 @@ module.exports = {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     script: [
       { src: '/js/facebook.js' },
+      { src: '/js/common.js' },
       { src: '/js/wx.js' },
-      {src: 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js'}
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -50,6 +51,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/antd-ui',
+    '@/plugins/vant-ui',
     '@/plugins/axios',
     { src: '@/plugins/vue-quill-editor', ssr: false },
     { src: '@/plugins/avatar.js', ssr: false },

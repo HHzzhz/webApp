@@ -44,6 +44,7 @@
 </template>
 <script>
 export default {
+  layout: "blank",
   data () {
     return {
       likeData: [],
@@ -66,7 +67,7 @@ export default {
     }).then((res) => {
       return {
         searchData: res.data
-    }
+      }
     })
   },
   created() {
@@ -90,32 +91,32 @@ export default {
 }
 </script>
 <style scoped lang="less">
-  .container {
-    color: #8D050B;
-    min-height: 100vh;
-    .title {
-      font-size: 30px;
-      line-height: 80px;
-      font-weight: 600;
-    }
-    .detail {
-      width: 300px;
-      margin-bottom: 35px;
-      margin-left: 10px;
-    }
-    .listcover {
-      padding-right: 30px;
-      height: 140px;
-      img {
-        height: 110px
-      }
-    }
-    .extra{
-      width: 272px;
-      height: 1px;
-    }
-    .content {
-      margin-top: 0px;
+.container {
+  color: #8D050B;
+  min-height: 100vh;
+  .title {
+    font-size: 30px;
+    line-height: 80px;
+    font-weight: 600;
+  }
+  .detail {
+    width: 300px;
+    margin-bottom: 35px;
+    margin-left: 10px;
+  }
+  .listcover {
+    padding-right: 30px;
+    height: 140px;
+    img {
+      height: 110px
     }
   }
+  .extra{
+    width: 272px;
+    height: 1px;
+  }
+  .content {
+    margin-top: 0px;
+  }
+}
 </style>

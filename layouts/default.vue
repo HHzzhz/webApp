@@ -19,7 +19,7 @@
           </span>
         </div>
         <div class="menu-container" id="menuContainer">
-          <nav class="menu">
+          <nav class="menu" v-if="!mobile">
             <nuxt-link to="/category/daily?category=daily" class="menu-item">Daily Life</nuxt-link>
             <nuxt-link to="/category/food?category=food" class="menu-item">Food & Drinks</nuxt-link>
             <!-- <nuxt-link to="/pageb" class="menu-item">Shopping</nuxt-link> -->
@@ -70,10 +70,10 @@
               </nuxt-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <nuxt-link to="/agreement" class="nav-link">
                 <p>User agreement</p>
                 <span>用户协议</span>
-              </a>
+              </nuxt-link>
             </li>
           </ul>
           <div class="footer-social">
@@ -108,14 +108,14 @@ export default {
       searchValue: '',
       avatarImg: require('~/assets/img/Asha-Go-dark-circle-logo-no-text.png'),
       userName: '',
-      loginFlag: false
+      loginFlag: false,
+      mobile: false,
     }
   },
   mounted() {
     window.addEventListener("scroll",()=>{
       let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         let offsetTop = document.querySelector('#menuContainer').offsetTop;
-        console.log(offsetTop,scrollTop, 'xxx====');
         if (scrollTop > offsetTop) {
             document.querySelector('#menuContainer').style.position="fixed";
             document.querySelector('#menuContainer').style.top="0";
@@ -211,6 +211,7 @@ html {
   // top:0px;
   width: 100%;
   z-index: 999;
+  overflow: hidden;
 }
 .menu-container {
   width: 100%;
@@ -312,6 +313,8 @@ html {
 
 .footer {
   padding: 0px;
+  width: 100%;
+  overflow: hidden;
   margin-top: 10px;
   .footer-container {
     background-color: #8d040c;

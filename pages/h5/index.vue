@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="search">
+       <a-input-search placeholder="search" v-model="keyWord" @search="onSearch" size="large"/>
+    </div>
     <client-only>
       <swiper
         ref="carousel"
@@ -12,9 +15,6 @@
         <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index">
           <span @click="goDetail(item.blogId)">
             <img :src="item.cover" :alt="'banner'+index" >
-            <div class="text">
-              <p>{{item.recommendTitle}}</p>
-            </div>
           </span>
         </swiper-slide>
         <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
@@ -32,31 +32,6 @@
         />
       </a-card>
      </div>
-      <div class="category" v-for="(item, index) in categoryData" :key="'categoryData' + index">
-        <a-divider class="categoryTitle">
-          <nuxt-link :to="'/category/' + categoryDesc[index].text+ '?category='+ categoryDesc[index].text" >
-            {{categoryDesc[index].title}}
-          </nuxt-link>
-        </a-divider>
-        <nuxt-link :to="'/category/' + categoryDesc[index].text+ '?category='+ categoryDesc[index].text" class="more">MORE&nbsp;&nbsp;<a-icon type="double-right" /></nuxt-link>
-        <p class="card-container" v-for="i in Math.ceil(item.length/3)" :key="i">
-          <a-card hoverable
-                  class="card"
-                  v-for="j in 3"
-                  :key="'lastest'+ i + j"
-                  @click="goDetail(item[(i-1)*3 + j -1].blogId)">
-            <template v-if="((i-1)*3 + j -1) < item.length">
-              <img
-                class="card-img"
-                slot="cover"
-                alt="example"
-                :src="item[(i-1)*3 + j - 1].img"
-              />
-              <a-card-meta :title="item[(i-1)*3 + j -1].title"></a-card-meta>
-            </template>
-          </a-card>
-        </p>
-      </div>
   </div>
 </template>
 
@@ -66,6 +41,7 @@ const baseUrl = '../assets/img/bg';
 export default {
   computed: {
   },
+  layout: 'h5',
   data() {
     return {
       baseUrl,
@@ -255,6 +231,20 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  .search {
+    width: 100%;
+    height: 400px;
+    text-align: centrn;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("../../assets/img/search.jpg");
+    background-size: cover;
+    .ant-input-affix-wrapper {
+      margin-top: -10%;
+      width: 40%;
+    }
+  }
   .more {
     font-size: 1.6rem;
   }
@@ -266,6 +256,7 @@ export default {
     margin-top: 1.3rem;
     margin-bottom: 25px;
     justify-content: space-around;
+    flex-wrap: wrap;
     .card-img  {
       width: 150px;
       height: 150px;
