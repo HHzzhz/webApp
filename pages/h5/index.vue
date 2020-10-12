@@ -44,8 +44,8 @@
               size="large"
               :bordered="false">
               <a-list-item :key="i" v-for="(item, i) in recentData" @click="goDetail(item.blogId)">
-                <div class="listcover">
-                  <img style="height: 200px; margin: -10px 0" shape="square" :src="item.cover" />
+                <div class="list-cover">
+                  <img  shape="square" :src="item.cover" />
                 </div>
                 <!-- <a-list-item-meta>
                   <a slot="title"></a>
@@ -103,6 +103,11 @@ export default {
   computed: {
   },
   layout: 'h5',
+  asyncData(context) {
+     if (!context.isMobile) {
+       context.redirect('/');
+     }
+  },
   data() {
     return {
       baseUrl,
@@ -133,7 +138,7 @@ export default {
           },
         },
         bannerData: [],
-        
+
         cityData: [
           {name: 'All China', url: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/pic/citis/IMG_0207.PNG'},
           {name: 'Beijing', url: 'https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/pic/citis/IMG_0209.PNG'},
@@ -302,14 +307,24 @@ export default {
     justify-content: space-around;
     flex-wrap: wrap;
     .card-img  {
-      width: 150px;
-      height: 150px;
+      width: 10rem;
+      height: 10rem;
     }
   }
   .card-container {
-    padding: 1rem;
-    min-width: 160px;
-    margin-left: 1.2rem;
+      min-width: 16rem;
+      .list-cover {
+        img {
+          width: 28rem;
+          margin: -10px 0;
+        }
+      }
+      .ant-list-split {
+        .ant-list-item {
+          border-bottom: none;
+          justify-content: center;
+        }
+      }
   }
   .category {
     position: relative;
@@ -327,9 +342,19 @@ export default {
         right: 40px;
     }
     .card-container {
+      padding: 1rem;
+      min-width: 160px;
+      margin-left: 1.2rem;
       display: flex;
       justify-content: space-around;
-      padding: 0px 60px;
+      .ant-list-split {
+        .ant-list-item {
+          border-bottom: none;
+        }
+      }
+      .ant-list-item-meta-title {
+        font-size: 1.5rem;
+      }
       .ant-card {
           border-radius: 15px;
       }
@@ -342,6 +367,11 @@ export default {
         }
         .ant-card-cover img {
           border-radius: 15px 15px 0 0;
+        }
+      }
+      .ant-list-split {
+        .ant-list-item {
+          border-bottom: none;
         }
       }
     }
