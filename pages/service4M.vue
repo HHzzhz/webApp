@@ -27,7 +27,7 @@
     <a-row>
       <a-col :span="2" />
       <a-col :span="20">
-        <div style="height:20px"></div>
+        <div style="height:40px"></div>
       <p style="color:#990000;font-size:14px;line-height:15px;font-family:Helvetica;">Asha Go platform aims to address your needs and concerns about living in China. </p>
         <p style="color:#990000;font-size:14px;line-height:15px;font-family:Helvetica;">We hope to offer services to address your needs ranging from drivers, to cleaners and language instructors.</p>
                 <p style="color:#990000;font-size:14px;line-height:15px;font-family:Helvetica;">What services do you require that would make living in China easier for you?</p>
@@ -55,7 +55,7 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #990000;
   margin-top: 10px;
   line-height: 15px;
