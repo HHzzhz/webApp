@@ -2,14 +2,14 @@
   <div>
       <div class="h5-header">
         <div class="menu-container">
-            <van-icon class="menu" size="4rem" name="wap-nav" @click="showPopup"/>
+            <van-icon class="menu" size="6vh" name="wap-nav" @click="showPopup"/>
             <img class="header-logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
             <span class="login">
               <a-button @click="signHandler" v-show="!loginFlag" class="button">Login</a-button>
               <span v-show="!!loginFlag">
                 <!-- <a-avatar :src="$store.state.userInfo.avatar || avatarImg" @click="goInfo"></a-avatar> -->
-                <span class="user-name">{{$store.state.userInfo.userName || userName}}</span>
-                <a-button type="link" @click="logoutHandler" ghost>Logout</a-button>
+                <!-- <span class="user-name">{{$store.state.userInfo.userName || userName}}</span> -->
+                <icon-font type="iconexit" class="logout-icon" @click="logoutHandler"/>
               </span>
             </span>
             <van-popup v-model="show" position="top left" class="popup">
@@ -34,7 +34,7 @@
               <nuxt-link to="/service" class="menu-item">
                 <icon-font type="iconicon_service" class="icon"/>Service
               </nuxt-link>
-              <nuxt-link to="/service" class="menu-item">
+              <nuxt-link to="/contactUs" class="menu-item">
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
             </van-popup>
@@ -44,6 +44,12 @@
       <div class="content">
         <Nuxt />
       </div>
+      <div class="h5-fotter">
+        <view>
+          <van-cell :title="item.text" v-for="(item, index) in footData" :key="index" is-link/>
+          <div class="copyright">Copyright © 2020 Asha Go Inc. All rights reserved.</div>
+        </view>
+      </div>
   </div>
 </template>
 <script>
@@ -51,7 +57,7 @@ const Cookie = process.client ? require('js-cookie') : undefined
 import { Icon } from 'ant-design-vue';
 
 const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_2118142_nof06qcreu.js',
+  scriptUrl: '//at.alicdn.com/t/font_2118142_fev5ry0wqpp.js',
 });
 export default {
    components: {
@@ -68,6 +74,24 @@ export default {
       list: ['Daily Life', 'Food & Drinks', 'Travel', 'Language', 'Community', 'Service', 'About Us'],
       loading: false,
       finished: false,
+      footData: [
+        {
+          text: '我们是谁 who we are',
+          link: '/aboutUs'
+        },
+        {
+          text: '商业合作 Business inquiries',
+          link: '/contactUs'
+        },
+        {
+          text: '投稿 Write for us',
+          link: '/contactUs'
+        },
+        {
+          text: '用户协议 User agreement',
+          link: '/agreement'
+        },
+      ]
     }
   },
   mounted() {
@@ -181,6 +205,10 @@ html {
   .van-popup--top {
     width: auto;
   }
+  .logout-icon {
+     width: 10rem;
+     height: 10rem;
+  }
   .icon {
     margin-right: 0.5rem;
   }
@@ -240,92 +268,18 @@ html {
   height: 100%;
   overflow: hidden;
 }
-
-.footer {
-  padding: 0px;
-  width: 100%;
-  overflow: hidden;
-  margin-top: 10px;
-  .footer-container {
+.h5-fotter {
+  margin-bottom: 5rem;
+  color: #fff;
+  background-color: #8d040c;
+  .van-cell {
     background-color: #8d040c;
     color: #fff;
-    padding: 2rem 0;
-    position: relative;
-    bottom: 0;
-    .connet {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: nowrap;
-    }
-    .footer-link {
-      margin-left: 25px;
-      list-style: none;
-      display: inline-block;
-      .nav-item {
-        display: inline-block;
-        padding-left: 25px;
-        .nav-link {
-          font-size: 16px;
-          color: #fff;
-          margin-right: 50px;
-          p {
-            padding-bottom: 10px;
-          }
-        }
-      }
-    }
-    .footer-social {
-      display: inline-flex;
-      margin-right: 50px;
-      .mail-desc {
-        height: 40px;
-        line-height: 40px;
-      }
-      .social-icon {
-        color: #fff;
-        margin-left: 30px;
-        svg {
-          height: 40px;
-          width: 40px;
-        }
-      }
-    }
-    .copyright {
-        width: 100%;
-        font-size: 18px;
-        line-height: 18px;
-        text-align: center;
-        margin-top: 40px;
-    }
   }
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+  .copyright {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 5rem
+  }
 }
 </style>

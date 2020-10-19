@@ -10,8 +10,8 @@
       <a-col :span="14">
         <div style="height:30px">
           <h1
-            style="text-align:left;color:#990000;font-size:20px;line-height:20px;font-family:Arial;"
-          >Welcome to join Asha Go community!</h1>
+            style="text-align:left;color:#990000;font-size:30px;line-height:30px;font-family:Arial;"
+          >Welcome to Asha Go community!</h1>
         </div>
       </a-col>
       <a-col :span="4" />
@@ -22,13 +22,13 @@
       <a-col :span="14">
         <div style="height:10px"></div>
         <p
-          style="text-align:left;color:#990000;font-size:8px;line-height:15px;font-family:Arial;"
-        >One of the biggest challenging parts of living in a foreign country is loneliness and lack of a sense of belonging.</p>
+          style="text-align:left;color:#990000;font-size:14px;line-height:15px;font-family:Arial;"
+        >Living in a foreign country can be tough. The biggest challenges are loneliness and the lack of a sense of belonging. </p>
         <p
-          style="text-align:left;color:#990000;font-size:8px;line-height:15px;font-family:Arial;"
-        >You are not alone! Here you can join our online peer supporting groups and attend our social activities.</p>
+          style="text-align:left;color:#990000;font-size:14px;line-height:15px;font-family:Arial;"
+        >However, you are not alone! Join our online support groups and attend our social gatherings.</p>
         <p
-          style="text-align:left;color:#990000;font-size:8px;line-height:15px;font-family:Arial;"
+          style="text-align:left;color:#990000;font-size:14px;line-height:15px;font-family:Arial;"
         >As always, our aim is to make your life in China easy and exciting!</p>
       </a-col>
       <a-col :span="4" />
@@ -43,9 +43,8 @@
     <a-row>
       <a-col :span="8" />      
       <a-col :span="8">
-        <p style="text-align:left;color:#990000;font-size:8px;line-height:15px;font-family:Arial;">
-          Asha Go expats supporting and social group
-          (scan QR code with Wechat)
+        <p style="text-align:left;color:#990000;font-size:14px;line-height:15px;font-family:Arial;">
+          Scan the QR code to join our Wechat group!
         </p>
         <div
           style="width:100%;height:120px;background:url(https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/pic/community/asha4M.jpg)"
