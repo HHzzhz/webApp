@@ -6,13 +6,13 @@
       </a-col>
       </a-row>
     <a-row>
-      <a-col :span="4" />
-      <a-col :span="16">
+      <a-col :span="2" />
+      <a-col :span="20">
         <div style="height:30px">
-        <h1 style="color:#990000;font-size:20px;line-height:20px;font-family:Helvetica;">Asha Go Service (coming soon)</h1>
+        <h1 style="color:#990000;font-size:30px;line-height:30px;font-family:Helvetica;">Asha Go Services (coming soon)</h1>
       </div>
       </a-col>
-      <a-col :span="4" />
+      <a-col :span="2" />
     </a-row>
     <!-- <a-row>
       <a-col :span="2" />
@@ -28,10 +28,10 @@
       <a-col :span="2" />
       <a-col :span="20">
         <div style="height:20px"></div>
-      <p style="color:#990000;font-size:9px;line-height:15px;font-family:Helvetica;">Asha Go platform aims to address your needs and concerns about living in China. </p>
-        <p style="color:#990000;font-size:9px;line-height:15px;font-family:Helvetica;">We hope to offer services to address your needs ranging from drivers, to cleaners and language instructors.</p>
-                <p style="color:#990000;font-size:9px;line-height:15px;font-family:Helvetica;">What services do you require that would make living in China easier for you?</p>
-                <p style="color:#990000;font-size:9px;line-height:15px;font-family:Helvetica;">Please drop us an email to let us better help you: <b>info@ashago.com</b></p>
+      <p style="color:#990000;font-size:14px;line-height:15px;font-family:Helvetica;">Asha Go platform aims to address your needs and concerns about living in China. </p>
+        <p style="color:#990000;font-size:14px;line-height:15px;font-family:Helvetica;">We hope to offer services to address your needs ranging from drivers, to cleaners and language instructors.</p>
+                <p style="color:#990000;font-size:14px;line-height:15px;font-family:Helvetica;">What services do you require that would make living in China easier for you?</p>
+                <p style="color:#990000;font-size:14px;line-height:15px;font-family:Helvetica;">Please drop us an email to let us better help you: <b>info@ashago.com</b></p>
 
       </a-col>
       <a-col :span="2" />
