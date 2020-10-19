@@ -20,7 +20,7 @@
     <a-row>
       <a-col :span="2" />
       <a-col :span="20">
-        <div style="height:20px"></div>
+        <div style="height:40px"></div>
         <p
           style="text-align:left;color:#990000;font-size:14px;line-height:15px;font-family:Arial;"
         >Living in a foreign country can be tough. The biggest challenges are loneliness and the lack of a sense of belonging. </p>
@@ -47,7 +47,7 @@
           Scan the QR code to join our Wechat group!
         </p>
         <div
-          style="width:100%;height:120px;background:url(https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/pic/community/asha4M.jpg)"
+          style="width:120px;height:120px;background:url(https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/pic/community/asha4M.jpg)"
         ></div>
       </a-col>
       <a-col :span="8" />
