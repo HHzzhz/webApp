@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="h5-container">
     <div class="search">
       <span class="conent">
         <div class="desc">ASHA GO</div>
@@ -32,7 +32,7 @@
         />
       </a-card>
      </div>
-    <a-divider class="categoryTitle"> Recent Blog</a-divider>
+    <a-divider class="categoryTitle"> Featured Articles</a-divider>
     <client-only>
     <div class="article-list" :bordered="false" >
        <div
@@ -93,6 +93,20 @@
         </div>
       </div>
     </client-only>
+    <van-tabbar v-model="active">
+      <nuxt-link to="/h5" class="tab-item">
+        <van-tabbar-item icon="home-o">Home</van-tabbar-item>
+      </nuxt-link>
+      <nuxt-link to="/article/search" class="tab-item">
+        <van-tabbar-item icon="search">search</van-tabbar-item>
+      </nuxt-link>
+      <nuxt-link to="/contactUs" class="tab-item">
+        <van-tabbar-item icon="shop-collect-o">concatUS</van-tabbar-item>
+      </nuxt-link>
+      <nuxt-link to="/h5/my" class="tab-item">
+        <van-tabbar-item icon="contact">my</van-tabbar-item>
+      </nuxt-link>
+    </van-tabbar>
   </div>
 </template>
 
@@ -116,7 +130,7 @@ export default {
       loading: false,
       busy: false,
       index: 0,
-
+      active: 0,
       swiperOptions: {
           loop: true,
           slidesPerView: 'auto',
@@ -262,36 +276,54 @@ export default {
 </script>
 
 <style scoped lang="less">
-.container {
+.h5-container {
   margin: 0 auto;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
   text-align: center;
+  .van-tabbar {
+    display: flex;
+    justify-content: space-around;
+    .tab-item {
+      color: #000;
+      padding-top: 0.4rem;
+      .van-tabbar-item__text {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .van-tabbar-item--active {
+    color: #8D050B;
+    .tab-item {
+      color: #8D050B;
+    }
+  }
   .search {
     display: inline-block;
     vertical-align: middle;
     width: 100%;
-    height: 33rem;
+    height: 93vh;
     text-align: center;
     color: #fff;
-    background: url("../../assets/img/search.jpg");
+    background: url("../../assets/img/phone-index.jpeg");
     background-size: cover;
     .conent {
       display: inline-block;
-      margin: 6rem 0;
+      margin: 25vh 0;
       .input-search {
         width: 80%;
+        margin-top: 3rem;
       }
     }
     .desc {
       display: block;
-      font-size: 2.8rem;
-      font-weight: 10;
+      font-size: 3rem;
+      font-weight: 20;
       margin-bottom: 1rem ;
     }
     .remark {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
   }
   .more {
@@ -306,6 +338,11 @@ export default {
     margin-bottom: 25px;
     justify-content: space-around;
     flex-wrap: wrap;
+    .card-city {
+      &:nth-child(5) {
+        margin-left: -6.2rem ;
+      }
+    }
     .card-img  {
       width: 10rem;
       height: 10rem;
@@ -315,7 +352,7 @@ export default {
       min-width: 16rem;
       .list-cover {
         img {
-          width: 28rem;
+          width: 30rem;
           margin: -10px 0;
         }
       }
