@@ -129,6 +129,10 @@
         </a-card>
       </div>
     </div>
+    <van-dropdown-menu direction="up">
+      <van-dropdown-item v-model="value1" :options="option1" />
+      <van-dropdown-item v-model="value2" :options="option2" />
+    </van-dropdown-menu>
   </div>
 </template>
 
@@ -162,6 +166,18 @@ export default {
   created() {},
   data() {
     return {
+      value1: 1,
+      option1: [
+        { text: '全部商品', value: 0 },
+        { text: '新款商品', value: 1 },
+        { text: '活动商品', value: 2 }
+      ],
+      value2: 0,
+      option2: [
+        { text: '男朋友', value: 0 },
+        { text: '女朋友', value: 1 },
+        { text: '男女朋友', value: 2 }
+      ],
       loadingFlag: true,
       latestData,
       latestRealatedBlog,
