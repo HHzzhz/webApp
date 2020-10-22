@@ -26,7 +26,7 @@
         link: [{ rel: "favicon", href: "favicon.ico" }]
       }
     },
-    // middleware: 'notTokenenticated',
+    middleware: 'notTokenenticated',
     asyncData(context) {
      if (!context.isMobile) {
        context.redirect('/my/');
