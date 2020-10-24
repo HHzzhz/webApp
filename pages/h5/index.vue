@@ -23,7 +23,7 @@
       </swiper>
      </client-only>
      <div class="city-container">
-       <a-card hoverable :bordered="false" class="card-city" v-for="(item, index) in cityData" :key="'city'+ index" @click="search(item.name)">
+       <a-card hoverable :bordered="false" class="card-city" v-for="(item, index) in cityData" :key="'city'+ index" @click="search(item.name, 'city')">
          <img
           class="card-img"
           slot="cover"
@@ -215,12 +215,20 @@ export default {
         }
       });
     },
-    search(value) {
-      this.$router.push({
-        path: '/article/search',
-        query: {
+    search(value, type) {
+      let query = {};
+      if (type == 'city') {
+          query = {
+            city : value
+          }
+      } else {
+        query = {
           keyWord: value
         }
+      }
+      this.$router.push({
+        path: '/article/search',
+        query: query
       })
     },
     goDetail(blogId) {
@@ -303,10 +311,10 @@ export default {
     display: inline-block;
     vertical-align: middle;
     width: 100%;
-    height: 93vh;
+    height: 92vh;
     text-align: center;
     color: #fff;
-    background: url("../../assets/img/phone-index.jpeg");
+    background: url("../../assets/img/phone-index.jpeg") center;
     background-size: cover;
     .conent {
       display: inline-block;
@@ -319,11 +327,12 @@ export default {
     .desc {
       display: block;
       font-size: 3rem;
-      font-weight: 20;
+      font-weight: bold;
       margin-bottom: 1rem ;
-    }
+    }                    
     .remark {
       font-size: 1.5rem;
+      font-weight: 500;
     }
   }
   .more {
@@ -367,7 +376,7 @@ export default {
     position: relative;
     .categoryTitle {
       margin-bottom: 28px;
-      font-size: 22px;
+      font-size: 2.3rem;
       cursor: pointer;
       a {
         color: #000;

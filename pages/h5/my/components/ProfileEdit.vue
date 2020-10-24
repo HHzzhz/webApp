@@ -4,7 +4,7 @@
       <van-field
         v-model="form2.userName"
         name="userName"
-        label="userName"
+        label="Username"
         placeholder="Please choose a username"
         :rules="[{ required: true, message: 'Please input your name' }]"
       />
@@ -12,13 +12,13 @@
         name="Gender"
         label="Gender"
         placeholder="Please Choose your Gender"
-        :rules="[{ required: true, message: 'Please Choose your Gender' }]"
+        :rules="[{ required: true, message: 'Please choose your gender' }]"
       >
         <template #input>
           <van-radio-group v-model="form2.Gender" direction="horizontal">
             <van-radio name="Female">Female</van-radio>
             <van-radio name="Male">Male</van-radio>
-            <van-radio name="OTHER" style="padding: 20px 0">OTHER</van-radio>
+            <van-radio name="OTHER" style="padding: 20px 0">Other</van-radio>
           </van-radio-group>
         </template>
       </van-field>
@@ -35,9 +35,9 @@
         name="birthday"
         :value="form2.birthday"
         label="Birthday"
-        placeholder="Please choose your Birthday"
+        placeholder="Please choose your birthday"
         @click="showPicker = true"
-        :rules="[{ required: true, message: 'Please choose your Birthday' }]"
+        :rules="[{ required: true, message: 'Please choose your birthday' }]"
       />
       <van-popup v-model="showPicker" position="bottom">
         <van-datetime-picker
@@ -52,14 +52,14 @@
         v-model="form2.email"
         name="email"
         label="Email"
-        placeholder="Please input your Email"
-        :rules="[{ required: true, message: 'Please write your Email' }]"
+        placeholder="Please input your email"
+        :rules="[{ required: true, message: 'Please write your email' }]"
       />
       <van-field
         v-model="form2.city"
         name="city"
         label="Where do you live now"
-        placeholder="Where do you live now:E.g. Beijing"
+        placeholder="Where do you live now:e.g. Beijing"
         :rules="[{ required: true, message: 'Please input your live now' }]"
       />
       <van-field
@@ -81,7 +81,7 @@
       </van-field>
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">
-          提交
+          submit
         </van-button>
       </div>
     </van-form>
