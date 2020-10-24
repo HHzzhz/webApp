@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="detail-container">
     <div>
       <a-spin tip="Loading..." v-show="loadingFlag"></a-spin>
       <div v-show="!loadingFlag" v-if="latestData">
@@ -129,6 +129,12 @@
         </a-card>
       </div>
     </div>
+    <!-- <van-tabbar active="{{ active }}" bind:change="onChange">
+      <van-tabbar-item icon="home-o">标签1</van-tabbar-item>
+      <van-tabbar-item icon="search">标签2</van-tabbar-item>
+      <van-tabbar-item icon="friends-o">标签3</van-tabbar-item>
+      <van-tabbar-item icon="setting-o">标签4</van-tabbar-item>
+    </van-tabbar> -->
     <van-dropdown-menu direction="up">
       <van-dropdown-item v-model="value1" :options="option1" />
       <van-dropdown-item v-model="value2" :options="option2" />
@@ -357,7 +363,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-.container {
+.detail-container {
   margin: 0 15%;
   @media (max-width: 992px) {
     margin: 0;
@@ -370,6 +376,12 @@ export default {
   align-items: center;
   //overflow: auto;
   overflow: hidden;
+}
+.van-dropdown-menu {
+  position: fixed;
+    bottom: 0px;
+    z-index: 200;
+    width: 100%
 }
 .article-body {
   overflow: hidden;
