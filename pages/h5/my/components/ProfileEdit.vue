@@ -12,7 +12,7 @@
         name="Gender"
         label="Gender"
         placeholder="Please Choose your Gender"
-        :rules="[{ required: true, message: 'Please Choose your Gender' }]"
+        :rules="[{ required: true, message: 'Please choose your gender' }]"
       >
         <template #input>
           <van-radio-group v-model="form2.Gender" direction="horizontal">
@@ -35,7 +35,7 @@
         name="birthday"
         :value="form2.birthday"
         label="Birthday"
-        placeholder="Please choose your Birthday"
+        placeholder="Please choose your birthday"
         @click="showPicker = true"
         :rules="[{ required: true, message: 'Please choose your birthday' }]"
       />
@@ -52,7 +52,7 @@
         v-model="form2.email"
         name="email"
         label="Email"
-        placeholder="Please input your Email"
+        placeholder="Please input your email"
         :rules="[{ required: true, message: 'Please write your email' }]"
       />
       <van-field

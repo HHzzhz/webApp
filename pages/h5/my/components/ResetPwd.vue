@@ -1,6 +1,6 @@
 <template>
   <div class="resetPwd">
-    <div class="title">Change Passwords</div>
+    <div class="title">Change Password</div>
     <a-form :form="reSetPwdForm" @submit="handleSubmit" class="form" :label-col="{ span: 7 }" :wrapper-col="{ span: 17 }" labelAlign="left">
       <a-form-item label="Old password">
         <a-col :span="15">
@@ -9,18 +9,18 @@
           'oldPassword',
           {
             rules: [
-              { required: true, message: 'Please input your oldPwd!' }
+              { required: true, message: 'Please input your old password!' }
             ]
           },
         ]"
             type="password"
-            placeholder="oldPwd"
+            placeholder="old password"
             size="large"
           >
             <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25);" />
           </a-input>
         </a-col>
-        <a-col :span="7" :offset="2" class="forgetPwd" @click="forget">Forget password ?</a-col>
+        <a-col :span="7" :offset="2" class="forgetPwd" @click="forget">Forgot your password?</a-col>
       </a-form-item>
       <a-form-item has-feedback label="New password">
         <a-col :span="15">
@@ -35,7 +35,7 @@
           },
         ]"
             type="password"
-            placeholder="Password"
+            placeholder="New Password"
             size="large"
           >
             <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25)" />

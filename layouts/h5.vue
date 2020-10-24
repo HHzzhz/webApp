@@ -206,8 +206,7 @@ html {
     width: auto;
   }
   .logout-icon {
-     width: 10rem;
-     height: 10rem;
+     font-size: 4rem;
   }
   .icon {
     margin-right: 0.5rem;
@@ -224,7 +223,7 @@ html {
     right: 0.5rem;
     color: #fff;
     .button {
-       background: #8d040c;
+      background: #8d040c;
       color: #fff
     }
   }
