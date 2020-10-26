@@ -101,10 +101,10 @@
         <van-tabbar-item icon="search">search</van-tabbar-item>
       </nuxt-link>
       <nuxt-link to="/contactUs" class="tab-item">
-        <van-tabbar-item icon="shop-collect-o">concatUS</van-tabbar-item>
+        <van-tabbar-item icon="shop-collect-o">concat us</van-tabbar-item>
       </nuxt-link>
       <nuxt-link to="/h5/my" class="tab-item">
-        <van-tabbar-item icon="contact">my</van-tabbar-item>
+        <van-tabbar-item icon="contact">me</van-tabbar-item>
       </nuxt-link>
     </van-tabbar>
   </div>
@@ -293,6 +293,7 @@ export default {
   .van-tabbar {
     display: flex;
     justify-content: space-around;
+    height: 6vh;
     .tab-item {
       color: #000;
       padding-top: 0.4rem;
@@ -329,7 +330,7 @@ export default {
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 1rem ;
-    }                    
+    }
     .remark {
       font-size: 1.5rem;
       font-weight: 500;

@@ -46,7 +46,9 @@
       </div>
       <div class="h5-fotter">
         <view>
-          <van-cell :title="item.text" v-for="(item, index) in footData" :key="index" is-link/>
+          <nuxt-link :to="item.link" class="menu-item" v-for="(item, index) in footData" :key="index">
+            <van-cell :title="item.text"  is-link/>
+          </nuxt-link>
           <div class="copyright">Copyright © 2020 Asha Go Inc. All rights reserved.</div>
         </view>
       </div>
