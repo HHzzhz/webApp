@@ -18,29 +18,28 @@
           <div class="socialmedia">
             <a-row>
               <a-col :span="12">
-                  <a
-                    target="_blank"
-                    v-bind:href="'http://www.facebook.com/sharer.php?u='+ encodeURIComponent(currentUrl)"
-                  >
-                    <a-icon type="facebook"/>
-                  </a>
-                  <a
-                    target="_blank"
-                    v-bind:href="'http://twitter.com/share?url='+ encodeURIComponent(currentUrl)"
-                  >
-                    <a-icon type="twitter"/>
-                  </a>
-                  <a
-                    target="_blank"
-                    v-bind:href="'https://www.linkedin.com/shareArticle?url='+ encodeURIComponent(currentUrl)"
-                  >
-                    <a-icon type="linkedin"/>
-                  </a>
-                  <a @click="copyUrl">
-                    <a-icon type="link"/>
-                  </a>
+                <a
+                  target="_blank"
+                  v-bind:href="'http://www.facebook.com/sharer.php?u='+ encodeURIComponent(currentUrl)"
+                >
+                  <a-icon type="facebook"/>
+                </a>
+                <a
+                  target="_blank"
+                  v-bind:href="'http://twitter.com/share?url='+ encodeURIComponent(currentUrl)"
+                >
+                  <a-icon type="twitter"/>
+                </a>
+                <a
+                  target="_blank"
+                  v-bind:href="'https://www.linkedin.com/shareArticle?url='+ encodeURIComponent(currentUrl)"
+                >
+                  <a-icon type="linkedin"/>
+                </a>
+                <a @click="copyUrl">
+                  <a-icon type="link"/>
+                </a>
               </a-col>
-
               <div style="float: right;">
                 <a-col style="float: right;">
                   <p>{{latestData.city}}</p>
@@ -49,9 +48,9 @@
             </a-row>
           </div>
           <a-divider/>
-          <div class="salesCard" style="margin-bottom: 48px">
+          <div class="viewsCard" style="margin-bottom: 48px">
             <a-row>
-              <a-col :span="6">{{latestData.views}} views</a-col>
+              <a-col :span="10">{{latestData.views}} views</a-col>
               <div style="float: right;">
                 <a-col style="float: right;">
                   {{latestData.likes}}
@@ -63,6 +62,56 @@
               </div>
             </a-row>
           </div>
+          <div class="comment">
+            <a-comment>
+              <a-avatar
+                slot="avatar"
+                :src="$store.state.userInfo.avatar || avatarImg"
+                style="backgroundColor:#ac4448; margin:5px"
+              />
+              <div v-if="$store.state.userInfo.avatar" slot="content">
+                <a-form-item>
+                  <a-textarea :rows="4" :value="value" @change="handleChange"/>
+                </a-form-item>
+                <a-form-item>
+                  <a-button
+                    html-type="submit"
+                    :loading="submitting"
+                    style="float: right;"
+                    type="primary"
+                    @click="handleSubmit"
+                  >Add Comment</a-button>
+                </a-form-item>
+              </div>
+              <div v-else slot="content" class="login-tips">
+                <nuxt-link to="../login">Login to leave a comment</nuxt-link>
+              </div>
+            </a-comment>
+            <a-divider/>
+            <a-comment v-for="(item, index) in commentsData" :key="'related'+ index">
+              <a slot="author">{{item.author}}</a>
+              <a-avatar slot="avatar" :src="item.avatar" alt="Han Solo"/>
+              <p slot="content">{{item.content}}</p>
+            </a-comment>
+            <div>
+              <a-list
+                v-if="comments.length"
+                :data-source="comments"
+                :header="`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`"
+                item-layout="horizontal"
+              >
+                <a-list-item slot="renderItem" slot-scope="item, index">
+                  <a-comment
+                    :author="item.author"
+                    :avatar="item.avatar"
+                    :content="item.content"
+                    :datetime="item.datetime"
+                  />
+                </a-list-item>
+              </a-list>
+            </div>
+          </div>
+
           <div class="related-post">
             <div class="normal-content">
               <p>Related Posts</p>
@@ -80,76 +129,43 @@
               </a-col>
             </a-row>
           </div>
-          <a-comment v-for="(item, index) in commentsData" :key="'related'+ index">
-            <a slot="author">{{item.author}}</a>
-            <a-avatar slot="avatar" :src="item.avatar" alt="Han Solo"/>
-            <p slot="content">{{item.content}}</p>
-          </a-comment>
-          <div>
-            <a-list
-              v-if="comments.length"
-              :data-source="comments"
-              :header="`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`"
-              item-layout="horizontal"
-            >
-              <a-list-item slot="renderItem" slot-scope="item, index">
-                <a-comment
-                  :author="item.author"
-                  :avatar="item.avatar"
-                  :content="item.content"
-                  :datetime="item.datetime"
-                />
-              </a-list-item>
-            </a-list>
-
-          <a-divider/>
-            <a-comment >
-              <a-avatar
-              slot="avatar"
-              :src="$store.state.userInfo.avatar || avatarImg"
-              style="backgroundColor:#ac4448; margin:5px"/>
-              <div v-if="$store.state.userInfo.avatar" slot="content">
-                <a-form-item>
-                  <a-textarea :rows="4" :value="value" @change="handleChange"/>
-                </a-form-item>
-                <a-form-item>
-                  <a-button
-                    html-type="submit"
-                    :loading="submitting"
-                    style="float: right;"
-                    type="primary"
-                    @click="handleSubmit"
-                  >Add Comment</a-button>
-                </a-form-item>
-              </div>
-              <div v-else slot="content" class="login-tips">Login to leave a comment
-              </div>
-            </a-comment>
-          </div>
         </a-card>
       </div>
     </div>
-    <!-- <van-tabbar active="{{ active }}" bind:change="onChange">
-      <van-tabbar-item icon="home-o">标签1</van-tabbar-item>
-      <van-tabbar-item icon="search">标签2</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">标签3</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">标签4</van-tabbar-item>
-    </van-tabbar> -->
-    <van-dropdown-menu direction="up">
-      <van-dropdown-item v-model="value1" :options="option1" />
-      <van-dropdown-item v-model="value2" :options="option2" />
-    </van-dropdown-menu>
+    <van-tabbar v-model="active">
+      <nuxt-link to="/h5" class="tab-item">
+        <van-tabbar-item icon="home-o">Home</van-tabbar-item>
+      </nuxt-link>
+
+      <div class="tab-item">
+        <van-tabbar-item v-show="likeIcon" theme="filled" @click="cancelLike" icon="like">Like</van-tabbar-item>
+        <van-tabbar-item v-show="!likeIcon" theme="outlined" @click="postLike" icon="like-o">Like</van-tabbar-item>
+      </div>
+
+      <nuxt-link to="/h5/blog/comments" class="tab-item">
+        <van-tabbar-item icon="comment-o">Comment</van-tabbar-item>
+      </nuxt-link>
+      <div class="tab-item">
+        <van-tabbar-item icon="share-o" @click="showShare = true">Share</van-tabbar-item>
+      </div>
+    </van-tabbar>
+    <van-share-sheet
+      class="share"
+      v-model="showShare"
+      title="Share to"
+      :options="options"
+      @select="onSelect"
+    />
   </div>
 </template>
 
 <script>
-import { HeartOutlined } from "@ant-design/icons";
-
 import { constants } from "zlib";
 import { connect } from "tls";
 import { log } from "util";
 import { parse } from "querystring";
 import copy from "copy-to-clipboard";
+import { Toast } from "vant";
 
 const Cookie = process.client ? require("js-cookie") : undefined;
 const latestData = {};
@@ -160,7 +176,7 @@ const blogId = "";
 const currentUrl = "";
 export default {
   layout(context) {
-        return context.isMobile ? 'h5' : 'default';
+    return context.isMobile ? "h5" : "default";
   },
   watch: {
     "$route.query"(newValue) {
@@ -172,18 +188,6 @@ export default {
   created() {},
   data() {
     return {
-      value1: 1,
-      option1: [
-        { text: '全部商品', value: 0 },
-        { text: '新款商品', value: 1 },
-        { text: '活动商品', value: 2 }
-      ],
-      value2: 0,
-      option2: [
-        { text: '男朋友', value: 0 },
-        { text: '女朋友', value: 1 },
-        { text: '男女朋友', value: 2 }
-      ],
       loadingFlag: true,
       latestData,
       latestRealatedBlog,
@@ -193,10 +197,30 @@ export default {
       submitting: false,
       value: "",
       blogId,
+      active: 0,
       commentsData,
       likeIcon: false,
       currentUrl,
-      avatarImg: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png")
+      avatarImg: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png"),
+      showShare: false,
+      options: [
+        {
+          name: "facebook",
+          icon:
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604062907063&di=d6063a74f0edd572bfce1d9a735a1b9b&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171012%2F71f50c6aba864c9ababebb866abb964c.png"
+        },
+        {
+          name: "twitter",
+          icon:
+            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1102075851,2526986960&fm=26&gp=0.jpg"
+        },
+        {
+          name: "linkedin",
+          icon:
+            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2810718230,2808086288&fm=26&gp=0.jpg"
+        },
+        { name: "copy link", icon: "link" }
+      ]
     };
   },
   mounted() {
@@ -242,9 +266,11 @@ export default {
           this.latestData = res.data;
           this.latestRealatedBlog = res.dataList;
           var initHTML = res.data.html;
-          var reg = /width="([0-9])\w+" height="([0-9])\w+"/g;//
-          this.legacySystemHTML = initHTML.replace(reg, 'width="100%" height="100%"');
-          text = text.replace(reg, '');
+          var reg = /width="([ ]*[0-9])\w+" height="([ ]*[0-9])\w+"/g; //
+          this.legacySystemHTML = initHTML.replace(
+            reg,
+            'width="100%" height="100%"'
+          );
           this.tagList = res.data.tag.split(",");
           this.blogId = key;
           console.log(res.data, "DATA");
@@ -358,6 +384,11 @@ export default {
     },
     handleChange(e) {
       this.value = e.target.value;
+    },
+    onSelect(option) {
+      this.$toast(option.name);
+      this.showShare = false;
+      console.log(this.showShare);
     }
   }
 };
@@ -379,18 +410,18 @@ export default {
 }
 .van-dropdown-menu {
   position: fixed;
-    bottom: 0px;
-    z-index: 200;
-    width: 100%
+  bottom: 0px;
+  z-index: 200;
+  width: 100%;
 }
 .article-body {
   overflow: hidden;
   @media (max-width: 992px) {
-    font-size: 12px!important;
+    font-size: 12px !important;
   }
   img {
-    width: 100%!important;
-    height: 100%!important;
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 .tag {
@@ -411,8 +442,8 @@ export default {
   }
 }
 .related-post {
-  padding-top:3%;
-  padding-bottom: 5%
+  padding-top: 3%;
+  padding-bottom: 5%;
 }
 .login-tips {
   font-size: 20px;
@@ -445,5 +476,31 @@ export default {
   a-icon {
     margin-right: 10%;
   }
+}
+.comment {
+  @media (max-width: 992px) {
+    padding-bottom: 15%;
+  }
+}
+.van-tabbar {
+  display: flex;
+  justify-content: space-around;
+  .tab-item {
+    color: #000;
+    padding-top: 0.4rem;
+    .van-tabbar-item__text {
+      font-size: 1.2rem;
+    }
+  }
+}
+.van-tabbar-item--active {
+  color: #8d050b;
+  .tab-item {
+    color: #8d050b;
+  }
+}
+.viewsCard {
+  font-size: 20px;
+  line-height: 20px;
 }
 </style>

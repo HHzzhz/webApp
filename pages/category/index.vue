@@ -25,7 +25,7 @@
             <div class="tag-list">
               <a-card :bordered="true">
                 <h2>
-                  <a-icon type="schedule" style="margin-right: 1%"/>Hot Tags
+                  <a-icon type="schedule" style="margin-right: 1%"/>Tags
                 </h2>
                 <a-divider/>
                 <div>
