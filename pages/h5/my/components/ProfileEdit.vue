@@ -135,7 +135,7 @@ import moment from 'moment';
           if (res.code == 0) {
             const data = res.data
             this.$store.commit('setUserInfo', data)
-            this.form = {
+            this.form2 = {
               birthday: data.birthday || '1990-09-04',
               city: data.city,
               country: data.country,
