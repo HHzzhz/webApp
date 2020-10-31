@@ -11,7 +11,7 @@
             rules: [{ required: true, message: 'Please input your name' }]
           },
         ]"
-          placeholder="Please choose a username"
+          placeholder="Please input your name"
         />
       </a-form-item>
       <a-form-item label="Gender">
@@ -177,12 +177,11 @@ import moment from 'moment';
         form: this.$form.createForm(this, {name: 'profile'})
       }
     },
-    mounted() {
+    created() {
       this.getInfo();
     },
     methods: {
       getInfo() {
-        const { setFieldsValue } = this.form;
         this.$Server({
           url: '/user/profile',
           method: 'get',
@@ -193,7 +192,7 @@ import moment from 'moment';
           if (res.code == 0) {
             const data = res.data
             this.$store.commit('setUserInfo', data)
-            setFieldsValue({
+            this.form.setFieldsValue({
               birthday: data.birthday || '1990-09-04',
               city: data.city,
               country: data.country,
