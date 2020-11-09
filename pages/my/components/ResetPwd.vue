@@ -14,7 +14,7 @@
           },
         ]"
             type="password"
-            placeholder="oldPwd"
+            placeholder="old password"
             size="large"
           >
             <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25);" />
