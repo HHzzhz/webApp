@@ -107,8 +107,8 @@ import moment from 'moment';
           userName: '',
           birthday: ''
         },
-        minDate: new Date(2020, 0, 1),
-        maxDate: new Date(2025, 10, 1),
+        minDate: new Date(1900, 0, 1),
+        maxDate: new Date(2050, 10, 1),
         showPicker: false
       }
     },
