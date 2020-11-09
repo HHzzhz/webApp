@@ -72,7 +72,7 @@
 </template>
 <script>
 export default {
-  layout: "blank",
+  layout: "h5",
   data () {
     return {
       reSetPwdForm: this.$form.createForm(this, { name: 'horizontal_reset' }),

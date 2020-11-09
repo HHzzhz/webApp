@@ -28,7 +28,7 @@
 <script>
 import moment from 'moment';
 export default {
-  layout: "blank",
+  layout: "h5",
   data () {
     return {
       imgDataUrl: require('~/assets/img/Asha-Go-dark-circle-logo-no-text.png'),

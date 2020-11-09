@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h5">
       <div class="h5-header">
         <div class="menu-container">
             <van-icon class="menu" size="6vh" name="wap-nav" @click="showPopup"/>
@@ -13,31 +13,45 @@
               </span>
             </span>
             <van-popup v-model="show" position="top left" class="popup">
-              <nuxt-link to="/h5" class="menu-item">
+              <nuxt-link to="/h5" class="menu-item" @click.native="menuHandler">
                 <a-icon type="home" class="icon"/> Home
               </nuxt-link>
-              <nuxt-link to="/category/daily?category=daily" class="menu-item">
+              <nuxt-link to="/category/daily?category=daily" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconDaily" /> Daily Life
               </nuxt-link>
-              <nuxt-link to="/category/food?category=food" class="menu-item">
+              <nuxt-link to="/category/food?category=food" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconfood" class="icon"/>Food & Drinks
               </nuxt-link>
-              <nuxt-link to="/category/travel?category=travel" class="menu-item">
+              <nuxt-link to="/category/travel?category=travel" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconfeiji" class="icon"/>Travel
               </nuxt-link>
-              <nuxt-link to="/category/language?category=language" class="menu-item">
+              <nuxt-link to="/category/language?category=language" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconlanguage" class="icon"/>Language
               </nuxt-link>
-              <nuxt-link to="/community" class="menu-item">
+              <nuxt-link to="/community" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconcommunity" class="icon"/>Community
               </nuxt-link>
-              <nuxt-link to="/service" class="menu-item">
+              <nuxt-link to="/service" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconicon_service" class="icon"/>Service
               </nuxt-link>
-              <nuxt-link to="/contactUs" class="menu-item">
+              <nuxt-link to="/contactUs" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
             </van-popup>
+            <van-tabbar v-model="active" v-show="barDisplay">
+              <nuxt-link to="/h5" class="tab-item">
+                <van-tabbar-item icon="home-o">Home</van-tabbar-item>
+              </nuxt-link>
+              <nuxt-link to="/article/search" class="tab-item">
+                <van-tabbar-item icon="search">Search</van-tabbar-item>
+              </nuxt-link>
+              <nuxt-link to="/contactUs" class="tab-item">
+                <van-tabbar-item icon="shop-collect-o">Contact Us</van-tabbar-item>
+              </nuxt-link>
+              <nuxt-link to="/h5/my" class="tab-item">
+                <van-tabbar-item icon="contact">me</van-tabbar-item>
+              </nuxt-link>
+            </van-tabbar>
         </div>
           <!-- <a-input-search class ='search' placeholder="search" v-model="searchValue" enter-button @search="onSearch" @pressEnter="onSearch"/> -->
       </div>
@@ -67,6 +81,7 @@ export default {
   },
   data() {
     return {
+      barDisplay: true,
       searchValue: '',
       avatarImg: require('~/assets/img/Asha-Go-dark-circle-logo-no-text.png'),
       userName: '',
@@ -121,6 +136,9 @@ export default {
     },
     showPopup () {
       this.show = true;
+    },
+    menuHandler() {
+      this.show = false;
     },
     signHandler() {
       this.$router.push('/login');
@@ -189,7 +207,8 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-.h5-header {
+.h5 {
+  .h5-header {
   .menu-container {
   overflow: hidden;
   width: 100%;
@@ -198,7 +217,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #8d040c;
+  background-color: #96141b;
   color: #fff;
   .header-logo {
     margin: 0 auto;
@@ -225,12 +244,12 @@ html {
     right: 0.5rem;
     color: #fff;
     .button {
-      background: #8d040c;
+      background: #96141b;
       color: #fff
     }
   }
   .popup {
-    background-color: #8d040c;
+    background-color: #96141b;
     height: 100%;
   }
   .menu-item {
@@ -252,11 +271,11 @@ html {
       border: none;
       color: #fff;
       border-bottom: 1px solid #fff;
-      background-color: #8d040c;
+      background-color: #96141b;
       border-radius: 0px;
     }
     .ant-btn-primary {
-      background-color: #8d040c;
+      background-color: #96141b;
       border: none;
       border-radius: 0px;
     }
@@ -266,15 +285,15 @@ html {
 
 .content {
   display: block;
-  height: 100%;
+  height: 92vh;
   overflow: hidden;
 }
 .h5-fotter {
   margin-bottom: 5rem;
   color: #fff;
-  background-color: #8d040c;
+  background-color: #96141b;
   .van-cell {
-    background-color: #8d040c;
+    background-color: #96141b;
     color: #fff;
   }
   .copyright {
@@ -283,4 +302,24 @@ html {
     line-height: 5rem
   }
 }
+  .van-tabbar {
+    display: flex;
+    justify-content: space-around;
+    height: 6vh;
+    .tab-item {
+      color: #000;
+      padding-top: 0.4rem;
+      .van-tabbar-item__text {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .van-tabbar-item--active {
+    color: #8D050B;
+    .tab-item {
+      color: #8D050B;
+    }
+  }
+}
+
 </style>

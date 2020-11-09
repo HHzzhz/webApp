@@ -129,16 +129,6 @@
         </a-card>
       </div>
     </div>
-    <!-- <van-tabbar active="{{ active }}" bind:change="onChange">
-      <van-tabbar-item icon="home-o">标签1</van-tabbar-item>
-      <van-tabbar-item icon="search">标签2</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">标签3</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">标签4</van-tabbar-item>
-    </van-tabbar> -->
-    <van-dropdown-menu direction="up">
-      <van-dropdown-item v-model="value1" :options="option1" />
-      <van-dropdown-item v-model="value2" :options="option2" />
-    </van-dropdown-menu>
   </div>
 </template>
 
@@ -172,18 +162,6 @@ export default {
   created() {},
   data() {
     return {
-      value1: 1,
-      option1: [
-        { text: '全部商品', value: 0 },
-        { text: '新款商品', value: 1 },
-        { text: '活动商品', value: 2 }
-      ],
-      value2: 0,
-      option2: [
-        { text: '男朋友', value: 0 },
-        { text: '女朋友', value: 1 },
-        { text: '男女朋友', value: 2 }
-      ],
       loadingFlag: true,
       latestData,
       latestRealatedBlog,

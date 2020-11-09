@@ -86,7 +86,7 @@ export default {
 //      }
 //    })
 //  },
-  layout: "blank",
+  layout: "h5",
   components: {
     ProfileEdit
   },
@@ -192,7 +192,7 @@ export default {
 <style scoped lang="less">
 .container {
   margin-top:50px;
-  margin-left: 30px;
+  margin-left: 1.2rem;
   color: #8D050B;
   //width: 500px;
   .title {
