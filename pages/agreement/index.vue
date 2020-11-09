@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 980px;margin: 0 auto;">
+  <div style="max-width: 980px;margin: 0 auto; padding: 10%">
     <h1 style="padding: 20px 0 15px;">
       <a href="javascript: void(0)" style="font-size: 38px; color: #666;text-decoration: none; font-weight: bold;">User agreement</a>
     </h1>
@@ -71,5 +71,8 @@
 <script>
   export default {
 //    layout: "blank"
+      layout(context) {
+        return context.isMobile ? 'h5' : 'default';
+      },
   }
 </script>
