@@ -70,7 +70,7 @@
 </template>
 <script>
 export default {
-  layout: "blank",
+  layout: "h5",
   data () {
     return  {
       form: this.$form.createForm(this, {name: 'dynamic_rule'}),

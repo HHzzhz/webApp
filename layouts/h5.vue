@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h5">
       <div class="h5-header">
         <div class="menu-container">
             <van-icon class="menu" size="6vh" name="wap-nav" @click="showPopup"/>
@@ -38,6 +38,20 @@
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
             </van-popup>
+            <van-tabbar v-model="active" v-show="barDisplay">
+              <nuxt-link to="/h5" class="tab-item">
+                <van-tabbar-item icon="home-o">Home</van-tabbar-item>
+              </nuxt-link>
+              <nuxt-link to="/article/search" class="tab-item">
+                <van-tabbar-item icon="search">Search</van-tabbar-item>
+              </nuxt-link>
+              <nuxt-link to="/contactUs" class="tab-item">
+                <van-tabbar-item icon="shop-collect-o">Contact Us</van-tabbar-item>
+              </nuxt-link>
+              <nuxt-link to="/h5/my" class="tab-item">
+                <van-tabbar-item icon="contact">me</van-tabbar-item>
+              </nuxt-link>
+            </van-tabbar>
         </div>
           <!-- <a-input-search class ='search' placeholder="search" v-model="searchValue" enter-button @search="onSearch" @pressEnter="onSearch"/> -->
       </div>
@@ -67,6 +81,7 @@ export default {
   },
   data() {
     return {
+      barDisplay: true,
       searchValue: '',
       avatarImg: require('~/assets/img/Asha-Go-dark-circle-logo-no-text.png'),
       userName: '',
@@ -192,7 +207,8 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-.h5-header {
+.h5 {
+  .h5-header {
   .menu-container {
   overflow: hidden;
   width: 100%;
@@ -269,7 +285,7 @@ html {
 
 .content {
   display: block;
-  height: 100%;
+  height: 92vh;
   overflow: hidden;
 }
 .h5-fotter {
@@ -286,4 +302,24 @@ html {
     line-height: 5rem
   }
 }
+  .van-tabbar {
+    display: flex;
+    justify-content: space-around;
+    height: 6vh;
+    .tab-item {
+      color: #000;
+      padding-top: 0.4rem;
+      .van-tabbar-item__text {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .van-tabbar-item--active {
+    color: #8D050B;
+    .tab-item {
+      color: #8D050B;
+    }
+  }
+}
+
 </style>

@@ -44,7 +44,7 @@
 </template>
 <script>
 export default {
-  layout: "blank",
+  layout: "h5",
   data () {
     return {
       likeData: [],
