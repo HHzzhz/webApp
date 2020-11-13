@@ -49,7 +49,7 @@
                 <van-tabbar-item icon="shop-collect-o">Contact Us</van-tabbar-item>
               </nuxt-link>
               <nuxt-link to="/h5/my" class="tab-item">
-                <van-tabbar-item icon="contact">me</van-tabbar-item>
+                <van-tabbar-item icon="contact">Me</van-tabbar-item>
               </nuxt-link>
             </van-tabbar>
         </div>
