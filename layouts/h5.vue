@@ -38,7 +38,7 @@
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
             </van-popup>
-            <van-tabbar  v-show="barDisplay">
+            <van-tabbar  v-show="barDisplay" safe-area-inset-bottom>
               <nuxt-link to="/h5" class="tab-item">
                 <van-tabbar-item icon="home-o">Home</van-tabbar-item>
               </nuxt-link>
