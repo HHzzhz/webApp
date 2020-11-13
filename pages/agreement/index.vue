@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 980px;margin: 0 auto;">
+  <div style="max-width: 980px;margin: 0 auto; padding: 10%">
     <h1 style="padding: 20px 0 15px;">
       <a href="javascript: void(0)" style="font-size: 38px; color: #666;text-decoration: none; font-weight: bold;">User agreement</a>
     </h1>
@@ -21,7 +21,7 @@
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:10pt">E-Mail:</span><span style="color:#171717; font-family:Helvetica; font-size:10pt">&nbsp;</span><a style="color:#1155cc" href="mailto:info@ashago.com" target="_blank"><span style="color:#1155cc; font-family:Helvetica; font-size:10pt; text-decoration:underline">info@ashago.com</span></a></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:10pt">Website:</span><span style="color:#171717; font-family:Helvetica; font-size:10pt">&nbsp;</span><a style="color:#1155cc" href="http://www.ashago.com/" target="_blank"><span style="color:#1155cc; font-family:Helvetica; font-size:10pt; text-decoration:underline">http://www.ashago.com</span></a></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt">&nbsp;</span></p>
-    <p style="margin:0pt"><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">Date of last revision: </span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">July</span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold"> </span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">6</span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">th, 2020</span></p>
+    <p style="margin:0pt"><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">Date of last revision: </span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">July</span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">&nbsp;&nbsp;6th, 2020</span></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt">&nbsp;</span></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt">&nbsp;</span></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt; font-weight:bold">Terms of Use</span></p>
@@ -71,5 +71,8 @@
 <script>
   export default {
 //    layout: "blank"
+      layout(context) {
+        return context.isMobile ? 'h5' : 'default';
+      },
   }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    
+
     <img class="logo pointer" @click="goHome" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
     <div class="title">Login</div>
     <a-form :form="form" @submit="handleSubmit" class="form">

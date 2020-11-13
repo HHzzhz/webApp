@@ -60,6 +60,20 @@
         </div>
       </client-only>
     </div>
+    <van-tabbar  v-if="isMoblie">
+      <nuxt-link to="/h5" class="tab-item">
+        <van-tabbar-item icon="home-o">Home</van-tabbar-item>
+      </nuxt-link>
+      <nuxt-link to="/article/search" class="tab-item">
+        <van-tabbar-item icon="search">search</van-tabbar-item>
+      </nuxt-link>
+      <nuxt-link to="/contactUs" class="tab-item">
+        <van-tabbar-item icon="shop-collect-o">concat us</van-tabbar-item>
+      </nuxt-link>
+      <nuxt-link to="/h5/my" class="tab-item">
+        <van-tabbar-item icon="contact">me</van-tabbar-item>
+      </nuxt-link>
+    </van-tabbar>
   </div>
 </template>
 <script>
@@ -68,8 +82,12 @@ export default {
     layout(context) {
         return context.isMobile ? 'h5' : 'default';
     },
+    created(context) {
+      this.isMobile = context.isMobile;
+    },
     data() {
         return {
+            isMoblie: false,
             keyWord: '',
             city: '',
             searchData: [{
@@ -234,8 +252,11 @@ export default {
       padding-right: 0px;
     }
     .search {
-      background: url("../../assets/img/phone-index.jpeg");
-      background-size: cover;
+      background: url("../../assets/img/search-bg2.jpg");
+      background-size: contain;
+      .ant-input-affix-wrapper {
+        width: 75%;
+      }
     }
   }
   .extra{

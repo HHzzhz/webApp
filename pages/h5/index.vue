@@ -8,7 +8,7 @@
         <a-input-search placeholder="search" v-model="keyWord" @search="search" class="input-search" size="large"/>
       </span>
     </div>
-    <client-only>
+    <!-- <client-only>
       <swiper
         ref="carousel"
         class="swiper pointer"
@@ -21,7 +21,7 @@
         </swiper-slide>
         <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
       </swiper>
-     </client-only>
+     </client-only> -->
      <div class="city-container">
        <a-card hoverable :bordered="false" class="card-city" v-for="(item, index) in cityData" :key="'city'+ index" @click="search(item.name, 'city')">
          <img
@@ -40,80 +40,73 @@
           :infinite-scroll-disabled="busy"
           :infinite-scroll-distance="10">
           <a-card :bordered="false" class="card-container">
-            <a-list
-              size="large"
-              :bordered="false">
-              <a-list-item :key="i" v-for="(item, i) in recentData" @click="goDetail(item.blogId)">
-                <div class="list-cover">
-                  <img  shape="square" :src="item.cover" />
-                </div>
-                <!-- <a-list-item-meta>
-                  <a slot="title"></a>
-                </a-list-item-meta> -->
-
-                <a class="categoryContent" href="#">
-                  <a-list itemLayout="vertical">
-                    <a-list-item>
-                      <a-list-item-meta :title="item.title">
-                        <!-- <div slot="description">
-                          <a-tag :key="index + 's'" v-for="(it, index) in item.tags" >{{it}}</a-tag>
-                        </div> -->
-                      </a-list-item-meta>
-                      <div class="content">
-                        <!-- <div
-                          class="detail"
-                          max-width="9%;"
-                        >{{item.content}}</div> -->
-                        <div class="author">
-                          <a-avatar
-                            style="margin:10px;"
-                            size="small"
-                            :src="item.avatar"
-                          />{{item.author}}
-                          <em>{{item.date}}</em>
-                          <span slot="actions">
-                            <a-icon style="margin-right: 8px" type="heart-o" />
-                            {{item.likes}}
-                          </span>
-                          <span slot="actions">
-                            <a-icon style="margin-right: 8px" type="message" />
-                            {{item.comment}}
-                          </span>
+              <a-list size="large" :bordered="false">
+                <a-list-item v-for="(item, index) in recentData" :key="'lastest'+ index" @click="goDetail(item.blogId)">
+                  <div class="listcover">
+                    <img
+                      shape="square"
+                      v-bind:src="item.cover"
+                    >
+                  </div>
+                  <a-list-item-meta>
+                    <a slot="title"></a>
+                  </a-list-item-meta>
+                  <a class="categoryContent">
+                    <a-list itemLayout="vertical">
+                      <a-list-item >
+                        <a-list-item-meta v-bind:title="item.title">
+                          <div slot="description">
+                            <a-tag
+                              v-for="(tagName, tagIndex) in item.tagList"
+                              :key="'lastest'+ tagIndex"
+                            >{{tagName}}</a-tag>
+                          </div>
+                        </a-list-item-meta>
+                        <div class="content">
+                          <div
+                            class="detail"
+                            max-width="9%;"
+                            style="word-break:break-all;"
+                          >{{item.content.substring(0,200)}}...</div>
+                          <div class="author">
+                            <a-avatar
+                              style="margin:10px;"
+                              size="small"
+                              v-bind:src="item.avatar"
+                            />
+                            {{item.author}}
+                            <a-divider type="vertical"/>
+                            {{item.time}} read
+                          </div>
                         </div>
-                      </div>
-                    </a-list-item>
-                    <div v-if="loading && !busy" class="demo-loading-container">
-                      <a-spin />
-                    </div>
-                  </a-list>
-                </a>
-              </a-list-item>
-            </a-list>
+                        <span slot="actions">
+                          <a-icon style="margin-right: 8px" type="heart-o"/>
+                          {{item.likes}}
+                        </span>
+                        <span slot="actions">
+                          <a-icon style="margin-right: 8px" type="message"/>
+                          {{item.comment}}
+                        </span>
+                      </a-list-item>
+                    </a-list>
+                  </a>
+                </a-list-item>
+              </a-list>
           </a-card>
         </div>
       </div>
     </client-only>
-    <van-tabbar v-model="active">
-      <nuxt-link to="/h5" class="tab-item">
-        <van-tabbar-item icon="home-o">Home</van-tabbar-item>
-      </nuxt-link>
-      <nuxt-link to="/article/search" class="tab-item">
-        <van-tabbar-item icon="search">search</van-tabbar-item>
-      </nuxt-link>
-      <nuxt-link to="/contactUs" class="tab-item">
-        <van-tabbar-item icon="shop-collect-o">concat us</van-tabbar-item>
-      </nuxt-link>
-      <nuxt-link to="/h5/my" class="tab-item">
-        <van-tabbar-item icon="contact">me</van-tabbar-item>
-      </nuxt-link>
-    </van-tabbar>
   </div>
 </template>
 
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined;
 const baseUrl = '../assets/img/bg';
+import Footer from './footer.vue';
 export default {
+  components: {
+    Footer
+  },
   computed: {
   },
   layout: 'h5',
@@ -198,6 +191,10 @@ export default {
         }
       }).then((res) => {
           if(res.code === '0'){
+          res.data.recentBlogs.forEach(item => {
+            item.tagList = item.tagList || ['tag1', '我热门呀', 'tag3', 'tag4']
+            item.content = item.content || '暂时文章没数据, 我来充充数我来充充数我来充充数我来充充数我来充充数充充数充充数充充数'
+          });
           this.recentData = this.recentData.concat(res.data.recentBlogs);
         }
       });
@@ -242,42 +239,6 @@ export default {
       Cookie.remove('_t');
       this.$store.commit('setToken', null);
       this.$router.push('/login');
-    },
-    getData(category) {
-      this.$Server({
-        url: "/blog/get-blog-list",
-        method: "post",
-        data: {
-          category: category,
-          recommend: true
-        },
-        transformRequest: [
-          function(data) {
-            let ret = "";
-            for (let it in data) {
-              ret +=
-                encodeURIComponent(it) +
-                "=" +
-                encodeURIComponent(data[it]) +
-                "&";
-            }
-            ret = ret.substring(0, ret.lastIndexOf("&"));
-
-            console.log(ret, "---");
-            return ret;
-          }
-        ],
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
-      })
-        .then(res => {
-          this.loadingFlag = false;
-          this.categoryData[category+ 'Data'] = res.dataList || [];
-        })
-        .finally(() => {
-          this.loadingFlag = false;
-        });
     },
   }
 }
@@ -423,8 +384,96 @@ export default {
       }
     }
   }
-
-
+  .article-list {
+    .ant-list {
+      text-align: left;
+    }
+    .listcover {
+      padding-right: 30px;
+      @media (max-width: 992px) {
+        padding: 0px;
+      }
+      img {
+        height: 200px;
+        margin: -10px 0;
+        @media (max-width: 992px) {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .extra {
+      width: 272px;
+      height: 1px;
+    }
+    .content {
+      margin-top: 0px;
+    }
+    .tag-btn {
+      margin-right: 10px;
+    }
+    .tag-list {
+      margin-bottom: 5%;
+    }
+    .cover {
+      margin-left: 10%;
+    }
+    .exception {
+      align-items: center;
+      text-align: center;
+      margin-bottom: 3%;
+      .img {
+        @media (max-width: 992px) {
+          width: 100%;
+          padding: 0;
+        }
+        display: inline-block;
+        padding-right: 52px;
+        zoom: 1;
+        img {
+          height: 360px;
+          max-width: 430px;
+        }
+      }
+      .content {
+        display: inline-block;
+        width: 35%;
+        text-align: left;
+        @media (max-width: 992px) {
+          width: 100%;
+          padding: 3rem;
+          padding-bottom: 0;
+        }
+        h1 {
+          color: #434e59;
+          font-size: 60px;
+          font-weight: 600;
+          line-height: 60px;
+          margin-bottom: 24px;
+        }
+        p {
+          font-size: 18px;
+          line-height: 20px;
+          margin-bottom: 24px;
+          text-align: left;
+        }
+        .desc {
+          color: rgba(0, 0, 0, 0.45);
+          font-size: 20px;
+          line-height: 28px;
+          margin-bottom: 16px;
+        }
+      }
+    }
+    .articlelist {
+      padding: 24px;
+      margin: 0px 15%;
+      @media (max-width: 992px) {
+        padding: 0px;
+        margin: 0px;
+      }
+    }
+  }
   .ant-carousel  .slick-dots {
     height: auto;
   }
@@ -440,7 +489,6 @@ export default {
       max-width: 80%;
     }
   }
-
   .ant-carousel  .slick-thumb {
     bottom: -45px;
   }
