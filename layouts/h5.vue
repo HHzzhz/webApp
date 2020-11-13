@@ -38,7 +38,7 @@
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
             </van-popup>
-            <van-tabbar v-model="active" v-show="barDisplay">
+            <van-tabbar  v-show="barDisplay" safe-area-inset-bottom>
               <nuxt-link to="/h5" class="tab-item">
                 <van-tabbar-item icon="home-o">Home</van-tabbar-item>
               </nuxt-link>
@@ -49,16 +49,16 @@
                 <van-tabbar-item icon="shop-collect-o">Contact Us</van-tabbar-item>
               </nuxt-link>
               <nuxt-link to="/h5/my" class="tab-item">
-                <van-tabbar-item icon="contact">me</van-tabbar-item>
+                <van-tabbar-item icon="contact">Me</van-tabbar-item>
               </nuxt-link>
             </van-tabbar>
         </div>
           <!-- <a-input-search class ='search' placeholder="search" v-model="searchValue" enter-button @search="onSearch" @pressEnter="onSearch"/> -->
       </div>
-      <div class="content">
+      <div class="content" >
         <Nuxt />
       </div>
-      <div class="h5-fotter">
+      <div class="h5-fotter" v-show="footer">
         <view>
           <nuxt-link :to="item.link" class="menu-item" v-for="(item, index) in footData" :key="index">
             <van-cell :title="item.text"  is-link/>
@@ -79,6 +79,15 @@ export default {
    components: {
     IconFont,
   },
+  watch: {
+      '$route.path' (val, oldval) {
+        if (val !== '/h5') {
+            this.footer = false;
+        } else {
+            this.footer = true;
+        }
+      }
+  },
   data() {
     return {
       barDisplay: true,
@@ -91,6 +100,7 @@ export default {
       list: ['Daily Life', 'Food & Drinks', 'Travel', 'Language', 'Community', 'Service', 'About Us'],
       loading: false,
       finished: false,
+      footer: true,
       footData: [
         {
           text: '我们是谁 who we are',
@@ -285,7 +295,7 @@ html {
 
 .content {
   display: block;
-  height: 92vh;
+  // height: 92vh;
   overflow: hidden;
 }
 .h5-fotter {

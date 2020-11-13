@@ -8,7 +8,7 @@
         <a-input-search placeholder="search" v-model="keyWord" @search="search" class="input-search" size="large"/>
       </span>
     </div>
-    <client-only>
+    <!-- <client-only>
       <swiper
         ref="carousel"
         class="swiper pointer"
@@ -21,7 +21,7 @@
         </swiper-slide>
         <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
       </swiper>
-     </client-only>
+     </client-only> -->
      <div class="city-container">
        <a-card hoverable :bordered="false" class="card-city" v-for="(item, index) in cityData" :key="'city'+ index" @click="search(item.name, 'city')">
          <img
