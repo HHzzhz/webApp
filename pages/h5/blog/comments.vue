@@ -7,32 +7,36 @@
       @click-left="onBack"
       class="navbar"
     />
-    <a-comment>
-      <div v-if="$store.state.userInfo.avatar" slot="content">
-        <a-avatar
-          slot="avatar"
-          :src="$store.state.userInfo.avatar || avatarImg"
-          style="backgroundColor:#ac4448; margin:5px"
-        />
-        <a-form-item>
-          <a-textarea :rows="4" :value="value" @change="handleChange"/>
-        </a-form-item>
-        <a-form-item>
-          <a-button
-            html-type="submit"
-            :loading="submitting"
-            style="float: right;"
-            type="primary"
-            @click="handleSubmit"
-          >Add Comment</a-button>
-        </a-form-item>
-      </div>
-      <div v-else slot="content" class="login-tips">
-        <a>
-          <nuxt-link to="/login">Login to leave a comment</nuxt-link>
-        </a>
-      </div>
-    </a-comment>
+    <div class="comment-content">
+      <a-comment>
+        <div v-if="$store.state.userInfo.avatar" slot="content">
+          <div class="comment-avatar">
+            <a-avatar
+              slot="avatar"
+              :src="$store.state.userInfo.avatar || avatarImg"
+              style="backgroundColor:#ac4448; margin:5px"
+            />
+          </div>
+          <a-form-item>
+            <a-textarea :rows="4" :value="value" @change="handleChange"/>
+          </a-form-item>
+          <a-form-item>
+            <a-button
+              html-type="submit"
+              :loading="submitting"
+              style="float: right;"
+              type="primary"
+              @click="handleSubmit"
+            >Add Comment</a-button>
+          </a-form-item>
+        </div>
+        <div v-else slot="content" class="login-tips">
+          <a>
+            <nuxt-link to="/login">Login to leave a comment</nuxt-link>
+          </a>
+        </div>
+      </a-comment>
+    </div>
   </div>
 </template>
 <script>
@@ -55,7 +59,9 @@ export default {
       avatarImg: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png")
     };
   },
-  mounted() {},
+  mounted() {
+    this.blogId = this.$route.query.blogId;
+  },
   methods: {
     handleSubmit() {
       if (!this.value) {
@@ -73,8 +79,10 @@ export default {
         }
       })
         .then(res => {
-          console.log(res, "handle submit res");
-          this.getComments(this.blogId);
+          console.log(res, "Handle submit res successfuly~");
+          if (history.length > 1) {
+            history.back();
+          }
         })
         .catch(err => {
           console.log(err, "err");
@@ -98,5 +106,13 @@ export default {
   line-height: 18px;
   color: #ac4448;
   padding-bottom: 20%;
+}
+.comment-content {
+  margin-right: 12px;
+  margin-left: 0px;
+}
+.comment-avatar {
+  margin-top: -5px;
+  margin-bottom: 12px;
 }
 </style>

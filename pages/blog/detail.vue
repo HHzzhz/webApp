@@ -147,9 +147,12 @@
         <van-tabbar-item v-show="!likeIcon" theme="outlined" @click="postLike" icon="like-o">Like</van-tabbar-item>
       </div>
 
-      <nuxt-link to="/h5/blog/comments" class="tab-item">
+
+      <div class="tab-item">
+      <nuxt-link :to="{ path: '/h5/blog/comments', query: { blogId: blogId }}">
         <van-tabbar-item icon="comment-o">Comment</van-tabbar-item>
       </nuxt-link>
+      </div>
       <div class="tab-item">
         <van-tabbar-item icon="share-o" @click="showShare = true">Share</van-tabbar-item>
       </div>
