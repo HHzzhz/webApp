@@ -37,6 +37,8 @@
               </div>
               <a-list size="large" :bordered="false">
                 <a-list-item v-for="(item, index) in latestData" :key="'lastest'+ index">
+
+                  <a class="categoryContent" v-bind:href="'/blog/detail?blogId='+ item.blogId">
                   <div class="listcover">
                     <img
                       shape="square"
@@ -47,7 +49,6 @@
                     <a slot="title"></a>
                   </a-list-item-meta>
 
-                  <a class="categoryContent" v-bind:href="'/blog/detail?blogId='+ item.blogId">
                     <a-list itemLayout="vertical">
                       <a-list-item>
                         <a-list-item-meta v-bind:title="item.title">

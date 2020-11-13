@@ -1,13 +1,19 @@
 <template>
   <div id="comments">
+    <van-nav-bar
+      title="Post New Comment"
+      left-text="Back"
+      left-arrow
+      @click-left="onBack"
+      class="navbar"
+    />
     <a-comment>
-      
       <div v-if="$store.state.userInfo.avatar" slot="content">
-          <a-avatar
-        slot="avatar"
-        :src="$store.state.userInfo.avatar || avatarImg"
-        style="backgroundColor:#ac4448; margin:5px"
-      />
+        <a-avatar
+          slot="avatar"
+          :src="$store.state.userInfo.avatar || avatarImg"
+          style="backgroundColor:#ac4448; margin:5px"
+        />
         <a-form-item>
           <a-textarea :rows="4" :value="value" @change="handleChange"/>
         </a-form-item>
@@ -22,11 +28,9 @@
         </a-form-item>
       </div>
       <div v-else slot="content" class="login-tips">
-          <a>
-          <nuxt-link to="/login">
-          Login to leave a comment
-          </nuxt-link>
-          </a>
+        <a>
+          <nuxt-link to="/login">Login to leave a comment</nuxt-link>
+        </a>
       </div>
     </a-comment>
   </div>
@@ -48,12 +52,10 @@ export default {
   data() {
     return {
       commentsData,
-      avatarImg: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png"),
+      avatarImg: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png")
     };
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
     handleSubmit() {
       if (!this.value) {
@@ -78,23 +80,23 @@ export default {
           console.log(err, "err");
         });
     },
-    copyUrl() {
-      copy(this.currentUrl);
-    },
     handleChange(e) {
       this.value = e.target.value;
+    },
+    onBack() {
+      if (history.length > 1) {
+        history.back();
+      }
     }
   }
 };
 </script>
 
 <style scoped lang="less">
-
 .login-tips {
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 18px;
   color: #ac4448;
   padding-bottom: 20%;
 }
-
 </style>

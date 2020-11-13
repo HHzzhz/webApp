@@ -12,10 +12,15 @@
           </div>
           <div class="article-body" v-html="legacySystemHTML"></div>
           <div>
-            <a-button class="tag" v-for="(item, index) in tagList" :key="'lastest'+ index">{{item}}</a-button>
+            <a-button
+              class="tag"
+              v-for="(tagName, index) in tagList"
+              :key="'lastest'+ index"
+              v-bind:href="'/category/bloglist?tag='+tagName"
+            >{{tagName}}</a-button>
           </div>
-          <a-divider/>
           <div class="socialmedia">
+            <a-divider/>
             <a-row>
               <a-col :span="12">
                 <a
@@ -166,6 +171,7 @@ import { log } from "util";
 import { parse } from "querystring";
 import copy from "copy-to-clipboard";
 import { Toast } from "vant";
+import { thistle } from "color-name";
 
 const Cookie = process.client ? require("js-cookie") : undefined;
 const latestData = {};
@@ -203,23 +209,24 @@ export default {
       currentUrl,
       avatarImg: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png"),
       showShare: false,
+      isPC: true,
       options: [
         {
-          name: "facebook",
+          name: "Facebook",
           icon:
             "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604062907063&di=d6063a74f0edd572bfce1d9a735a1b9b&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171012%2F71f50c6aba864c9ababebb866abb964c.png"
         },
         {
-          name: "twitter",
+          name: "Twitter",
           icon:
             "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1102075851,2526986960&fm=26&gp=0.jpg"
         },
         {
-          name: "linkedin",
+          name: "Linkedin",
           icon:
             "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2810718230,2808086288&fm=26&gp=0.jpg"
         },
-        { name: "copy link", icon: "link" }
+        { name: "Copy link", icon: "link" }
       ]
     };
   },
@@ -386,7 +393,29 @@ export default {
       this.value = e.target.value;
     },
     onSelect(option) {
-      this.$toast(option.name);
+      switch (option.name) {
+        case "Facebook":
+          window.open(
+            "http://www.facebook.com/sharer.php?u=" +
+              encodeURIComponent(currentUrl)
+          );
+          break;
+        case "Twitter":
+          window.open(
+            "http://twitter.com/share?url=" + encodeURIComponent(currentUrl)
+          );
+          break;
+        case "Linkedin":
+          window.open(
+            "https://www.linkedin.com/shareArticle?url=" +
+              encodeURIComponent(currentUrl)
+          );
+          break;
+        case "Copy link":
+          this.$toast("You just copied the link.");
+          copy(this.currentUrl);
+          break;
+      }
       this.showShare = false;
       console.log(this.showShare);
     }

@@ -1,14 +1,16 @@
 <template>
+<div>
+    <van-nav-bar
+      title="Your Comment"
+      left-text="Back"
+      left-arrow
+      @click-left="onBack"
+      class="navbar"
+    />
   <div class="container">
     <div class="title">Articles liked</div>
     <client-only>
       <div class="articlelist" :bordered="false">
-        <a-card :bordered="false" >
-          <a-list
-            size="large"
-            :bordered="false"
-            :pagination="pagination"
-          >
             <a-list-item :key="i" v-for="(item, i) in likeData">
               <div class="listcover">
                 <img style="margin: -10px 0" shape="square" :src="item.cover" />
@@ -36,11 +38,10 @@
                 </a-list>
               </a>
             </a-list-item>
-          </a-list>
-        </a-card>
       </div>
     </client-only>
   </div>
+</div>
 </template>
 <script>
 export default {
@@ -74,6 +75,11 @@ export default {
     this.getLikeList();
   },
   methods: {
+    onBack() {
+      if (history.length > 1) {
+        history.back();
+      }
+    },
     getLikeList (){
       this.$Server({
         url: '/like/list',
