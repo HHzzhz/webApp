@@ -41,7 +41,7 @@
     </a-row>
 
     <a-row>
-      <a-col :span="8" />      
+      <a-col :span="8" />
       <a-col :span="7">
         <p style="text-align:left;color:#990000;font-size:16px;line-height:30px;font-family:Arial;">
           Asha Go expats supporting and social group
@@ -64,6 +64,11 @@
 export default {
   layout(context) {
         return context.isMobile ? 'h5' : 'default';
+  },
+  asyncData(context) {
+     if (context.isMobile) {
+       context.redirect('/h5/community');
+     }
   },
 }
 </script>

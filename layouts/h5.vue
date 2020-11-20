@@ -3,7 +3,9 @@
       <div class="h5-header">
         <div class="menu-container">
             <van-icon class="menu" size="6vh" name="wap-nav" @click="showPopup"/>
-            <img class="header-logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
+            <a href="/h5" class="header-logo">
+             <img  class="header-logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
+            </a>
             <span class="login">
               <a-button @click="signHandler" v-show="!loginFlag" class="button">Login</a-button>
               <span v-show="!!loginFlag">
@@ -38,7 +40,7 @@
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
             </van-popup>
-            <van-tabbar  v-show="barDisplay" safe-area-inset-bottom>
+            <van-tabbar  v-show="barDisplay" safe-area-inset-bottom v-model="barActive">
               <nuxt-link to="/h5" class="tab-item">
                 <van-tabbar-item icon="home-o">Home</van-tabbar-item>
               </nuxt-link>
@@ -81,6 +83,7 @@ export default {
   },
   watch: {
       '$route.path' (val, oldval) {
+        console.log(val, 'route.path.pathal')
         if (val !== '/h5') {
             this.footer = false;
         } else {
@@ -92,6 +95,7 @@ export default {
     return {
       barDisplay: true,
       searchValue: '',
+      barActive: 0,
       avatarImg: require('~/assets/img/Asha-Go-dark-circle-logo-no-text.png'),
       userName: '',
       loginFlag: false,

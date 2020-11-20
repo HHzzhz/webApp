@@ -41,7 +41,7 @@
     </a-row>
 
     <a-row>
-      <a-col :span="8" />      
+      <a-col :span="8" />
       <a-col :span="8">
         <p style="text-align:left;color:#990000;font-size:14px;line-height:15px;font-family:Arial;">
           Scan the QR code to join our Wechat group!
@@ -63,6 +63,11 @@
 export default {
   layout(context) {
         return context.isMobile ? 'h5' : 'default';
+  },
+  asyncData(context) {
+     if (!context.isMobile) {
+       context.redirect('/community');
+     }
   },
 }
 </script>

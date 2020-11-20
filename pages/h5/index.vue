@@ -276,7 +276,7 @@ export default {
     height: 92vh;
     text-align: center;
     color: #fff;
-    background: url("../../assets/img/phone-index.jpeg") center;
+    background: url("../../assets/img/phone-index1.jpeg") center;
     background-size: cover;
     .conent {
       display: inline-block;
