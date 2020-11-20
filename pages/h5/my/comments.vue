@@ -1,86 +1,78 @@
 <template>
-  <div class="container">
-    <div class="title">Your comments</div>
-    <a-list
-      class="comment-list"
-      :header="`${commentsData.length} replies`"
-      item-layout="horizontal"
-      :data-source="commentsData"
-    >
-      <a-list-item slot="renderItem" slot-scope="item, index">
-        <a-comment :author="item.author" :avatar="item.avatar || imgDataUrl">
-          <template slot="actions">
-            <span>
-              comment on <span class="default">{{item.blogTitle}}</span>
-            </span>
-          </template>
-          <p slot="content">
-            {{ item.content }}
-          </p>
-          <!-- <a-tooltip slot="datetime" :title="item.datetime.format('YYYY-MM-DD HH:mm:ss')">
-            <span>{{ item.datetime.fromNow() }}</span>
-          </a-tooltip> -->
-        </a-comment>
-      </a-list-item>
-    </a-list>
+  <div>
+    <van-nav-bar
+      title="Your Comment"
+      left-text="Back"
+      left-arrow
+      @click-left="onBack"
+      class="navbar"
+    />
+    <div class="container">
+      <div class="title">Your comments</div>
+      <van-cell-group
+        class="comment-list"
+        :header="`${commentsData.length} replies`"
+        item-layout="horizontal"
+        :data-source="commentsData"
+      >
+        <van-cell-group slot="renderItem" slot-scope="item, index">
+          <van-cell :author="item.author" :avatar="item.avatar || imgDataUrl">
+            <template slot="actions">
+              <span>
+                comment on
+                <span class="default">{{item.blogTitle}}</span>
+              </span>
+            </template>
+            <p slot="content">{{ item.content }}</p>
+          </van-cell>
+        </van-cell-group>
+      </van-cell-group>
+    </div>
   </div>
 </template>
 <script>
-import moment from 'moment';
+import moment from "moment";
 export default {
   layout: "h5",
   data () {
     return {
-      imgDataUrl: require('~/assets/img/Asha-Go-dark-circle-logo-no-text.png'),
+      imgDataUrl: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png"),
       commentsData: [],
       moment
-    }
+    };
   },
-  created () {
+  created() {
     this.getComments();
   },
-//  asyncData ({ req, $Server, redirect, store }) {
-//    $Server({
-//      url: '/comment/list',
-//      method: 'GET',
-//      parmas: {
-//        userId: store.state.userId
-//      }
-//    }).then(res => {
-//      if (res.code == 0) {
-//        // 重定向到登录页面
-////        redirect('/login');
-//      } else {
-//        // return {
-//        //   data: res.data.comments
-//        // }
-//      }
-//    })
-//  },
   methods: {
+    onBack() {
+      if (history.length > 1) {
+        history.back();
+      }
+    },
     getComments() {
-      console.log(this.$store.state.userId, '----2222', '444');
+      console.log(this.$store.state.userId, "----2222", "444");
       this.$Server({
-        url: '/comment/list',
-        method: 'GET',
+        url: "/comment/list",
+        method: "GET",
         params: {
           userId: this.$store.state.userId,
-          test: 'test'
+          test: "test"
         }
       }).then(res => {
         if (res.code == 0) {
-          this.commentsData = res.data.comments
+          this.commentsData = res.data.comments;
         } else {
           this.$message.error(res.msg);
         }
-      })
+      });
     }
   }
-}
+};
 </script>
 <style scoped lang="less">
 .container {
-  color: #8D050B;
+  color: #8d050b;
   //width: 900px;
   padding: 20px;
   .title {
@@ -88,7 +80,7 @@ export default {
     line-height: 80px;
     font-weight: 600;
   }
-  .comments{
+  .comments {
     .item {
       display: flex;
       margin-bottom: 20px;
@@ -105,7 +97,7 @@ export default {
       }
       .item-content {
         flex: 1;
-        border: 1px solid #8D050B;
+        border: 1px solid #8d050b;
         border-radius: 5px;
         padding: 5px 10px;
         display: flex;
@@ -141,7 +133,7 @@ export default {
               .desc-content-item-title {
               }
               .desc-content-item-where {
-                color: #8D050B;
+                color: #8d050b;
               }
             }
           }
