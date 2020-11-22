@@ -83,7 +83,7 @@ export default {
   },
   watch: {
       '$route.path' (val, oldval) {
-        console.log(val, 'route.path.pathal')
+        console.log(val, 'route.path.path---')
         if (val !== '/h5') {
             this.footer = false;
         } else {
@@ -124,6 +124,13 @@ export default {
         },
       ]
     }
+  },
+  created() {
+    if (this.$route.path !== '/h5') {
+          this.footer = false;
+      } else {
+          this.footer = true;
+      }
   },
   mounted() {
     // window.addEventListener("scroll",()=>{

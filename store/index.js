@@ -4,7 +4,8 @@ export const state = () => {
   return {
     token: null,
     userId: null,
-    userInfo: {}
+    userInfo: {},
+    IsMoblie: false,
   }
 }
 export const mutations = {
@@ -16,6 +17,9 @@ export const mutations = {
   },
   setUserInfo(state, userInfo) {
     state.userInfo = userInfo
+  },
+  setIsMobile(state,IsMoblie) {
+    state.IsMoblie = IsMoblie
   }
 }
 export const actions = {

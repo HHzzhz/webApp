@@ -15,4 +15,5 @@ export default function (context) {
     // return isMobile(userAgent) ? redirect(mobileOrigin + route.fullPath) : redirect(pcOrigin + route.fullPath)
     // 给上下文对象增加 userAgent 属性（增加的属性可在 `asyncData` 和 `fetch` 方法中获取）
     context.isMobile =  isMobile(userAgent) && !isTablet;
+    context.store.commit('setIsMobile', context.isMobile);
   }

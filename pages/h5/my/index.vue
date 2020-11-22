@@ -7,7 +7,7 @@
       </div>
       <div class="userName">{{$store.state.userInfo.userName}}</div>
     </div>
-    <van-cell title="Profile" is-link url="/h5/my/profile" />
+    <van-cell title="Profile" is-link to="/h5/my/profile" />
     <van-cell title="Comments" is-link to="/h5/my/comments" />
     <van-cell title="Likes" is-link to="/h5/my/likes" />
     <van-cell title="Reset password" is-link to="/h5/my/resetPwd" />

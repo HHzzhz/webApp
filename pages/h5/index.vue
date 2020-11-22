@@ -192,7 +192,7 @@ export default {
       }).then((res) => {
           if(res.code === '0'){
           res.data.recentBlogs.forEach(item => {
-            item.tagList = item.tagList || ['tag1', '我热门呀', 'tag3', 'tag4']
+            item.tagList = item.tags.split(',') || ['tag1', '我热门呀', 'tag3', 'tag4']
             item.content = item.content || '暂时文章没数据, 我来充充数我来充充数我来充充数我来充充数我来充充数充充数充充数充充数'
           });
           this.recentData = this.recentData.concat(res.data.recentBlogs);
