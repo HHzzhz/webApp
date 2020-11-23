@@ -18,6 +18,7 @@
                   <a-list-item>
                     <div class="content">
                       <div
+                        @click="goDetail(id)"
                         class="detail"
                         max-width="9%;"
                         style="word-break:break-all;"
@@ -50,7 +51,7 @@ export default {
       pagination: {
         showQuickJumper: true,
         pageSize: 5,
-        total: 10,
+        total: 0,
         onChange: page => this.getData(page)
       }
     }
@@ -64,6 +65,7 @@ export default {
         likeTargetType: 'BLOG'
       }
     }).then((res) => {
+      this.pagination =  res.data.length
       return {
         searchData: res.data
     }
@@ -73,6 +75,9 @@ export default {
     this.getLikeList();
   },
   methods: {
+    goDetail(id) {
+       this.$router.push('/blog/detail?blogId=' + id);
+    },
     getLikeList (){
       this.$Server({
         url: '/like/list',

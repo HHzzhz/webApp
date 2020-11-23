@@ -137,7 +137,7 @@
         </a-card>
       </div>
     </div>
-    <van-tabbar v-model="active">
+    <van-tabbar v-model="active" v-show="$store.state.isMobile">
       <nuxt-link to="/h5" class="tab-item">
         <van-tabbar-item icon="home-o">Home</van-tabbar-item>
       </nuxt-link>
@@ -194,7 +194,6 @@ export default {
       this.getData(newValue);
     }
   },
-  created() {},
   data() {
     return {
       loadingFlag: true,

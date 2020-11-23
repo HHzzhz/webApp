@@ -22,7 +22,7 @@
       <a-col :span="16">
         <div style="height:40px"></div>
         <p
-          style="text-align:left;color:#990000;font-size:30px;line-height:30px;font-family:Arial;"
+         class="title"
         >Are you interested in working with Asha Go?</p>
         <div style="height:20px"></div>
 
@@ -114,21 +114,21 @@
         >Here at Asha Go we are open to hearing about your opinions and experiences of living in China! We believe that everyone has something to contribute. The more stories and ideas we share - the better!</p>
         <div style="height:20px"></div>
         <p
-          style="text-align:left;color:#990000;font-size:30px;line-height:30px;font-family:Arial;"
+        class="title"
         >What kind of articles are we interested in?</p>
         <p
-          style="text-align:left;color:#990000;font-size:16px;line-height:30px;font-family:Arial;"
+         class="context"
         >We are interested in anything about China that we haven’t already covered in our blog. At Asha Go, our focus in on helping expats establish themselves and live independently in China. So, any helpful tips, ideas or even your past experiences of living in China are of interest to us!</p>
         <div style="height:20px"></div>
         <p
-          style="text-align:left;color:#990000;font-size:30px;line-height:30px;font-family:Arial;"
+         class="title"
         >Article length</p>
         <p
           style="text-align:left;color:#990000;font-size:16px;line-height:30px;font-family:Arial;"
         >Most of our articles are between 1,000 to 2,000 words, are very informative and contain lots of helpful links. However, we also want to hear about your experiences - particularly if they contain some kind of helpful lesson or advice! We are therefore open to different styles and lengths as long as the article is well written, interesting, and informative.</p>
         <div style="height:20px"></div>
         <p
-          style="text-align:left;color:#990000;font-size:30px;line-height:30px;font-family:Arial;"
+         class="title"
         >How to Submit a Post</p>
         <p style="text-align:left;color:#990000;font-size:16px;line-height:30px;font-family:Arial;">
           Send us an email at
@@ -150,10 +150,15 @@ export default {
   layout(context) {
      return context.isMobile ? 'h5' : 'default';
   },
+  asyncData(context) {
+     if (context.isMobile) {
+       context.redirect('/h5/contactUs');
+     }
+  },
 }
 </script>
 
-<style>
+<style lang="less">
 #contact {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -163,5 +168,20 @@ export default {
   margin-top: 10px;
   line-height: 15px;
   font-size: 15px;
+  .title {
+    text-align:left;
+    color:#990000;
+    font-size:18px;
+    line-height:30px;
+    font-family:Arial;
+    font-weight: bold;
+  }
+  .context {
+    text-align:left;
+    color:#990000;
+    font-size:16px;
+    line-height:30px;
+    font-family:Arial;
+  }
 }
 </style>

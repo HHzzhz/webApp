@@ -83,7 +83,7 @@ export default {
           autoplay: {
             delay: 2000,
             stopOnLastSlide: false,
-            disableOnInteraction: false,
+            disableOnInteraction: true,
           },
           pagination: {
             el: '.swiper-pagination',

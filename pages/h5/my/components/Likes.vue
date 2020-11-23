@@ -83,7 +83,7 @@ export default {
         }
       }).then((res) => {
         this.likeData = res.data.likeList;
-        this.pagination.total = this.likeData.length;
+        this.pagination.total = this.likeData && this.likeData.length || [];
       })
     }
   }

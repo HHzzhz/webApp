@@ -161,7 +161,7 @@ export default {
 </script>
 <style scoped lang="less">
   .container {
-    margin-top:50px;
+    padding-bottom: 2rem;
     margin-left: 30px;
     color: #8D050B;
     width: 500px;

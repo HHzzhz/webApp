@@ -11,7 +11,7 @@
         <a-comment :author="item.author" :avatar="item.avatar || imgDataUrl">
           <template slot="actions">
             <span>
-              comment on <span class="default">{{item.blogTitle}}</span>
+              Your comment on<span class="default" @click="goDetail(item.id)">{{item.blogTitle}}</span>
             </span>
           </template>
           <p slot="content">
@@ -73,6 +73,9 @@ export default {
         this.$message.error(res.msg);
       }
     })
+    },
+    goDetail(id) {
+      this.$router.push('/blog/detail?blogId=' + id);
     }
   }
 }

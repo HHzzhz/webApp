@@ -13,8 +13,7 @@
                     <img
                       style="height: 200px; margin: -10px 0"
                       shape="square"
-                      v-bind:src="item.img"
-                    >
+                      v-bind:src="item.img">
                   </div>
                   <a-list-item-meta>
                     <a slot="title"></a>
@@ -141,51 +140,51 @@ export default {
 };
 </script>
  <style scoped lang="less">
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  padding: 5% 0px;
-  flex-direction: column;
-  align-items: center;
-  overflow: auto;
-}
-.listcover {
-  padding-right: 30px;
-  @media (max-width: 992px) {
-    padding: 0px;
-  }
-  img {
-    height: 200px;
-    margin: -10px 0;
+.blog-list {
+  // margin: 0 auto;
+  // min-height: 100vh;
+  // display: flex;
+  // padding: 5% 0px;
+  // flex-direction: column;
+  // align-items: center;
+  // overflow: auto;
+  .listcover {
+    padding-right: 30px;
     @media (max-width: 992px) {
-      height: 100%;
-      width: 100%;
+      padding: 0px;
+    }
+    img {
+      height: 200px;
+      margin: -10px 0;
+      @media (max-width: 992px) {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
-}
-.extra {
-  width: 272px;
-  height: 1px;
-}
-.content {
-  margin-top: 0px;
-}
-.tag-btn {
-  margin-right: 10px;
-}
-.tag-list {
-  margin-bottom: 5%;
-}
-.cover {
-  margin-left: 10%;
-}
-.articlelist {
-  padding: 24px;
-  margin: 0px 15%;
-  @media (max-width: 992px) {
-    padding: 0px;
-    margin: 0px;
+  .extra {
+    width: 272px;
+    height: 1px;
+  }
+  .content {
+    margin-top: 0px;
+  }
+  .tag-btn {
+    margin-right: 10px;
+  }
+  .tag-list {
+    margin-bottom: 5%;
+  }
+  .cover {
+    margin-left: 10%;
+  }
+  .articlelist {
+    padding: 24px;
+    margin: 0px 15%;
+    @media (max-width: 992px) {
+      padding: 0px;
+      margin: 0px;
+    }
   }
 }
 </style>
