@@ -158,7 +158,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 #contact {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -168,20 +168,20 @@ export default {
   margin-top: 10px;
   line-height: 15px;
   font-size: 15px;
-}
-.title {
-  text-align:left;
-  color:#990000;
-  font-size:18px;
-  line-height:30px;
-  font-family:Arial;
-  font-weight: bold;
-}
-.context {
-  text-align:left;
-  color:#990000;
-  font-size:16px;
-  line-height:30px;
-  font-family:Arial;
+  .title {
+    text-align:left;
+    color:#990000;
+    font-size:18px;
+    line-height:30px;
+    font-family:Arial;
+    font-weight: bold;
+  }
+  .context {
+    text-align:left;
+    color:#990000;
+    font-size:16px;
+    line-height:30px;
+    font-family:Arial;
+  }
 }
 </style>
