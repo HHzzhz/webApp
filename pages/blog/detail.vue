@@ -173,7 +173,7 @@ import { connect } from "tls";
 import { log } from "util";
 import { parse } from "querystring";
 import copy from "copy-to-clipboard";
-import { Toast } from "vant";
+// import { Toast } from "vant";
 import { thistle } from "color-name";
 
 const Cookie = process.client ? require("js-cookie") : undefined;
