@@ -64,7 +64,7 @@
                </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link to="/contactUs" class="nav-link">
+              <nuxt-link to="/contactUs#WRITE" class="nav-link">
                 <p>Write for us</p>
                 <span>投稿</span>
               </nuxt-link>

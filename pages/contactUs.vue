@@ -95,7 +95,7 @@
 
     <a-row>
       <a-col :span="4" />
-      <a-col :span="16">
+      <a-col :span="16" name="WRITE">
         <div style="height:60px">
           <h1
             style="text-align:left;color:#990000;font-size:40px;line-height:30px;font-family:Arial;"

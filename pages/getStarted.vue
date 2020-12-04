@@ -14,6 +14,12 @@
 </template>
 <script>
   export default {
+    layout(context) {
+     return context.isMobile ? 'h5' : 'default';
+    },
+    created() {
+      this.verify();
+    },
     data() {
       return {};
     },
