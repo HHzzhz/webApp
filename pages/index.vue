@@ -248,14 +248,14 @@ export default {
   align-items: center;
   text-align: center;
   .more {
-    font-size: 1.6rem;
+    font-size: 16px;
   }
   .ant-divider-inner-text {
     margin: 26px 0px;
   }
   .city-container {
     display: flex;
-    margin-top: 1.3rem;
+    margin-top: 15px;
     margin-bottom: 25px;
     justify-content: space-around;
     .card-img  {
