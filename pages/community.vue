@@ -6,18 +6,20 @@
       </a-col>
     </a-row>
     <a-row>
-      <a-col :span="6" />
+      <a-col :span="10" />
       <a-col :span="14">
         <div style="height:60px">
           <h1
             style="text-align:left;color:#990000;font-size:40px;line-height:30px;font-family:Arial;"
-          >Welcome to join Asha Go community!</h1>
+          >Coming soon!
+          <!-- Welcome to join Asha Go community! -->
+          </h1>
         </div>
       </a-col>
       <a-col :span="4" />
     </a-row>
 
-    <a-row>
+    <!-- <a-row>
       <a-col :span="6" />
       <a-col :span="14">
         <div style="height:20px"></div>
@@ -57,7 +59,7 @@
       <a-col :span="24">
         <div style="height:60px"></div>
       </a-col>
-    </a-row>
+    </a-row> -->
   </div>
 </template>
 <script>
