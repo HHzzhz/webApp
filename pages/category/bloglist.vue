@@ -15,11 +15,11 @@
                       shape="square"
                       v-bind:src="item.img">
                   </div>
-                  <a-list-item-meta>
+                  <!-- <a-list-item-meta>
                     <a slot="title"></a>
-                  </a-list-item-meta>
+                  </a-list-item-meta> -->
 
-                    <a-list itemLayout="vertical">
+                    <a-list >
                       <a-list-item>
                         <a-list-item-meta v-bind:title="item.title">
                           <div slot="description">

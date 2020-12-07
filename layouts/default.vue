@@ -90,7 +90,12 @@
             <a href="https://www.instagram.com/asha_go/" target="_blank">
               <a-icon type="instagram" class="social-icon"/>
             </a>
-            <a-icon type="wechat" class="social-icon"/>
+            <a-tooltip placement="top">
+              <template slot="title">
+                <img  class="wechat-icon" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="">
+              </template>
+              <a-icon type="wechat" class="social-icon"/>
+            </a-tooltip>
             <a-icon type="mail" class="social-icon"/>
             <span class="mail-desc"> &nbsp;&nbsp;&nbsp;Email: info@ashago.com</span>
           </div>
@@ -202,7 +207,13 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
+.ant-tooltip-inner {
+  .wechat-icon {
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+    }
+}
 .header {
   background-color: #fff;
   margin: 0px;
@@ -344,6 +355,7 @@ html {
         }
       }
     }
+
     .footer-social {
       display: inline-flex;
       margin-right: 50px;
@@ -351,6 +363,7 @@ html {
         height: 40px;
         line-height: 40px;
       }
+
       .social-icon {
         color: #fff;
         margin-left: 30px;
