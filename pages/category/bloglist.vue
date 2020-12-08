@@ -7,7 +7,6 @@
             <div v-show="!loadingFlag" v-if="latestData">
               <a-list size="large" :bordered="false">
                 <a-list-item v-for="(item, index) in latestData" :key="'lastest'+ index">
-
                   <a class="categoryContent" v-bind:href="'/blog/detail?blogId='+ item.blogId">
                   <div class="listcover">
                     <img
@@ -184,6 +183,9 @@ export default {
     @media (max-width: 992px) {
       padding: 0px;
       margin: 0px;
+    };
+    .categoryContent {
+      display: flex;
     }
   }
 }
