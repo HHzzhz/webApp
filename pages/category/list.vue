@@ -38,8 +38,7 @@
               <a-list size="large" :bordered="false">
                 <a-list-item v-for="(item, index) in latestData" :key="'lastest'+ index">
 
-                  <a class="categoryContent" v-bind:href="'/blog/detail?blogId='+ item.blogId">
-                  <div class="listcover">
+                  <div class="listcover" @click="goDetail(item.blogId)">
                     <img
                       shape="square"
                       v-bind:src="item.img"
@@ -86,7 +85,6 @@
                         </span>
                       </a-list-item>
                     </a-list>
-                  </a>
                 </a-list-item>
               </a-list>
             </div>
@@ -179,7 +177,14 @@ export default {
     },
     handleChange(e) {
       this.value = e.target.value;
-    }
+    },
+    goDetail(blogId) {
+      this.$router.push({
+        path: '/blog/detail',
+        query: {
+          blogId: blogId
+      }});
+    },
   }
 };
 </script>

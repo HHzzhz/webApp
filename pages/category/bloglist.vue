@@ -7,17 +7,12 @@
             <div v-show="!loadingFlag" v-if="latestData">
               <a-list size="large" :bordered="false">
                 <a-list-item v-for="(item, index) in latestData" :key="'lastest'+ index">
-                  <a class="categoryContent" v-bind:href="'/blog/detail?blogId='+ item.blogId">
-                  <div class="listcover">
+                  <div class="listcover" @click="goDetail(item.blogId)">
                     <img
                       style="height: 200px; margin: -10px 0"
                       shape="square"
                       v-bind:src="item.img">
                   </div>
-                  <!-- <a-list-item-meta>
-                    <a slot="title"></a>
-                  </a-list-item-meta> -->
-
                     <a-list >
                       <a-list-item>
                         <a-list-item-meta v-bind:title="item.title">
@@ -46,7 +41,6 @@
                         </div>
                       </a-list-item>
                     </a-list>
-                  </a>
                 </a-list-item>
               </a-list>
             </div>
@@ -134,7 +128,14 @@ export default {
     },
     handleChange(e) {
       this.value = e.target.value;
-    }
+    },
+    goDetail(blogId) {
+      this.$router.push({
+        path: '/blog/detail',
+        query: {
+          blogId: blogId
+      }});
+    },
   }
 };
 </script>
@@ -180,13 +181,13 @@ export default {
   .articlelist {
     padding: 24px;
     margin: 0px 15%;
+    .categoryContent {
+      display: flex;
+    }
     @media (max-width: 992px) {
       padding: 0px;
       margin: 0px;
     };
-    .categoryContent {
-      display: flex;
-    }
   }
 }
 </style>
