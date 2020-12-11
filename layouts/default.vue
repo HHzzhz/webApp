@@ -92,7 +92,7 @@
             </a>
             <a-tooltip placement="top">
               <template slot="title">
-                <img  class="wechat-icon" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="">
+                <img  class="wechat-icon" src="https://ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/Asha%20Go%20Website%201.0/%E9%A6%96%E9%A1%B5Homepage/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7QR%20code.jpg" alt="">
               </template>
               <a-icon type="wechat" class="social-icon"/>
             </a-tooltip>
@@ -209,8 +209,8 @@ html {
 }
 .ant-tooltip-inner {
   .wechat-icon {
-        height: 100px;
-        width: 100px;
+        height: 200px;
+        width: 200px;
         overflow: hidden;
     }
 }
