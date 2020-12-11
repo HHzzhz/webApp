@@ -5,7 +5,9 @@ COPY . /app
 WORKDIR /app
 
 RUN npm config set registry https://registry.npm.taobao.org
+RUN rm -rf node_module
 RUN npm install
+RUN npm list vue-template-compiler
 RUN npm run build
 
 ENV HOST 0.0.0.0
