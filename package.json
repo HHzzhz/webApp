@@ -23,7 +23,7 @@
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^9.1.0",
     "moment": "^2.27.0",
-    "nuxt": "~2.13.0",
+    "nuxt": "^2.13.0",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "swiper": "^5.4.5",
