@@ -5,9 +5,8 @@ COPY . /app
 WORKDIR /app
 
 RUN npm config set registry https://registry.npm.taobao.org
-RUN cat package.json
+RUN rm -rf node_module
 RUN npm install
-RUN npm install vue-template-compiler@2.6.11
 RUN npm list vue-template-compiler
 RUN npm run build
 
