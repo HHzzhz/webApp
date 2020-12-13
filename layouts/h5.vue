@@ -83,8 +83,7 @@ export default {
   },
   watch: {
       '$route.path' (val, oldval) {
-        console.log(val, 'route.path.path---')
-        if (val !== '/h5') {
+        if (['/h5', '/h5/'].indexOf(this.$route.path ) == -1) {
             this.footer = false;
         } else {
             this.footer = true;
@@ -126,7 +125,8 @@ export default {
     }
   },
   created() {
-    if (this.$route.path !== '/h5') {
+    // console.log(this.$route.path, 'h5-----');
+    if (['/h5', '/h5/'].indexOf(this.$route.path ) == -1) {
           this.footer = false;
       } else {
           this.footer = true;

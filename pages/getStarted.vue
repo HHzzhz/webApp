@@ -3,7 +3,6 @@
     style="background: #fff"
     status="success"
     title="Registration Successful"
-    sub-title="If you have verified the email link we sent you"
   >
     <template #extra>
       <a-button type="primary">
