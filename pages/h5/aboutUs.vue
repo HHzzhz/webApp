@@ -52,7 +52,7 @@ export default {
     color: #8d040c;
     .story {
       margin: 0 auto;
-      width: 80%;
+      width: 80%; 
       .title {
        font-size: 20px;
        margin-top: 50px ;
