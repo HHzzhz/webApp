@@ -106,7 +106,7 @@ export default {
       footer: true,
       footData: [
         {
-          text: '我们是谁 who we are',
+          text: '我们是谁 Who we are',
           link: '/aboutUs'
         },
         {

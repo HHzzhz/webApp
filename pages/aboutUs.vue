@@ -27,6 +27,9 @@
 </template>
 <script>
 export default {
+  layout(context) {
+        // return context.isMobile ? 'h5' : 'default';
+  },
   asyncData(context) {
     if (context.isMobile) {
       context.redirect('/h5/aboutUs');
