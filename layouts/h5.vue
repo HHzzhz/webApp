@@ -303,14 +303,15 @@ html {
   }
 }
 
-
 .content {
-  display: block;
-  // height: 92vh;
-  overflow: hidden;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 6rem;
 }
+
 .h5-fotter {
-  margin-bottom: 5rem;
+  margin-top: -6rem;
+  margin-bottom: 6rem;
   color: #fff;
   background-color: #96141b;
   .van-cell {
