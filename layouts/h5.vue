@@ -282,25 +282,6 @@ html {
     line-height: 6rem
   }
 }
-
-  .search {
-    margin-right: 40px ;
-    width: 200px;
-    font-size: 16px;
-    color: #fff;
-    .ant-input {
-      border: none;
-      color: #fff;
-      border-bottom: 1px solid #fff;
-      background-color: #96141b;
-      border-radius: 0px;
-    }
-    .ant-btn-primary {
-      background-color: #96141b;
-      border: none;
-      border-radius: 0px;
-    }
-  }
 }
 
 .content {
@@ -327,10 +308,10 @@ html {
   .van-tabbar {
     display: flex;
     justify-content: space-around;
-    height: 6vh;
+    // height: 6vh;
     .tab-item {
       color: #000;
-      padding-top: 0.4rem;
+      padding: 0.4rem;
       .van-tabbar-item__text {
         font-size: 1.2rem;
       }
