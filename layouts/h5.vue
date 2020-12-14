@@ -36,7 +36,7 @@
               <nuxt-link to="/service" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconicon_service" class="icon"/>Service
               </nuxt-link>
-              <nuxt-link to="/contactUs" class="menu-item" @click.native="menuHandler">
+              <nuxt-link to="/aboutUs" class="menu-item" @click.native="menuHandler">
                 <icon-font type="iconwoshou" class="icon"/>About Us
               </nuxt-link>
             </van-popup>
@@ -57,7 +57,7 @@
         </div>
           <!-- <a-input-search class ='search' placeholder="search" v-model="searchValue" enter-button @search="onSearch" @pressEnter="onSearch"/> -->
       </div>
-      <div class="content" >
+      <div class="container" >
         <Nuxt />
       </div>
       <div class="h5-fotter" v-show="footer">
@@ -284,7 +284,7 @@ html {
 }
 }
 
-.content {
+.container {
     display: block;
     overflow: hidden;
     margin-bottom: 6rem;
@@ -292,7 +292,7 @@ html {
 
 .h5-fotter {
   margin-top: -6rem;
-  margin-bottom: 6rem;
+  padding-bottom: 6rem;
   color: #fff;
   background-color: #96141b;
   .van-cell {

@@ -18,7 +18,7 @@
                   <a-list-item>
                     <div class="content">
                       <div
-                        @click="goDetail(id)"
+                        @click="goDetail(item.blogId)"
                         class="detail"
                         max-width="9%;"
                         style="word-break:break-all;"

@@ -59,6 +59,9 @@ const config = Config;
 export default {
   name: "BlogList",
   props: ["type"],
+  layout(context) {
+     return context.isMobile ? 'h5' : 'default';
+  },
   watch: {
     "$route.query"(newValue) {
       console.log(newValue, "Newvalue");
