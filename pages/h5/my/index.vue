@@ -20,7 +20,7 @@
 <script>
   export default {
     layout: "h5",
-    head() {
+    head() {  
       return {
         title: 'MyInfo',
         meta: [{ name: "description", hid: "description", content: "page aaaa"}],
