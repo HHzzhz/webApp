@@ -9,24 +9,28 @@
     />
     <div class="container">
       <div class="title">Your comments</div>
-      <van-cell-group
+      <a-list
         class="comment-list"
         :header="`${commentsData.length} replies`"
         item-layout="horizontal"
         :data-source="commentsData"
       >
-        <van-cell-group slot="renderItem" slot-scope="item, index">
-          <van-cell :author="item.author" :avatar="item.avatar || imgDataUrl">
+        <a-list-item slot="renderItem" slot-scope="item, index">
+          <a-comment :author="item.author" :avatar="item.avatar || imgDataUrl">
             <template slot="actions">
               <span>
-                comment on
-                <span class="default">{{item.blogTitle}}</span>
+                Your comment on<span class="default" @click="goDetail(item.blogId)">{{item.blogTitle}}</span>
               </span>
             </template>
-            <p slot="content">{{ item.content }}</p>
-          </van-cell>
-        </van-cell-group>
-      </van-cell-group>
+            <p slot="content">
+              {{ item.content }}
+            </p>
+            <!-- <a-tooltip slot="datetime" :title="item.datetime.format('YYYY-MM-DD HH:mm:ss')">
+              <span>{{ item.datetime.fromNow() }}</span>
+            </a-tooltip> -->
+          </a-comment>
+        </a-list-item>
+      </a-list>
     </div>
   </div>
 </template>
@@ -50,8 +54,21 @@ export default {
         history.back();
       }
     },
+    goDetail(id) {
+      this.$router.push('/blog/detail?blogId=' + id);
+    },
     getComments() {
-      console.log(this.$store.state.userId, "----2222", "444");
+      //
+      this.commentsData = [{
+          author: "Chloe Wang",
+          avatar: "ashago-resource.oss-cn-zhangjiakou.aliyuncs.com/avatar/535917709046882304.jpg",
+          blogId: "530862157472243712",
+          blogTitle: "All you need to know about Wechat",
+          commentId: "535920093571620864",
+          content: "Wechat can be so annoying sometimes! so many groups...",
+          postAt: "2020-12-14T09:56:13",
+          userId: "535917709046882304",
+      }];
       this.$Server({
         url: "/comment/list",
         method: "GET",

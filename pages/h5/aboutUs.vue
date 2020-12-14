@@ -52,16 +52,17 @@ export default {
     color: #8d040c;
     .story {
       margin: 0 auto;
-      width: 60%;
+      width: 80%; 
       .title {
        font-size: 20px;
        margin-top: 50px ;
       }
       font-size: 16px;
       line-height: 30px;
-      text-align: center;
+      text-align:center;
       p {
         margin-top: 25px;
+        text-align: left;
       }
     }
     .team {
@@ -71,14 +72,15 @@ export default {
       margin-top: 80px;
     }
     .person{
-      padding: 100px;
+      padding: 3rem;
       width: 80%;
       margin: 0 auto;
       display: flex;
       justify-content: space-around;
+      flex-wrap: wrap;
       .person-card {
         vertical-align: top;
-        margin-bottom: 100px;
+        margin-bottom: 2rem;
         display: inline-block;
         .image {
           display: inline-block;
@@ -88,7 +90,7 @@ export default {
           display: inline-block;
           width: 280px;
           height: 400px;
-          margin-left: 20px;
+          margin-left: 3rem;
           .name {
             font-size: 1rem;
             font-weight: 400;

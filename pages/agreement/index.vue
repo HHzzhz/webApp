@@ -4,7 +4,7 @@
       <a href="javascript: void(0)" style="font-size: 38px; color: #666;text-decoration: none; font-weight: bold;">User agreement</a>
     </h1>
     <p style="margin:0pt"><span style="color:#333333; font-family:Helvetica; font-size:10.5pt">&nbsp;</span></p>
-    <p style="margin:0pt"><span style="color:#333333; font-family:Helvetica; font-size:10.5pt">Asha Information and Technology LTD Shanghai</span><span style="color:#333333; font-family:Helvetica; font-size:10.5pt">&nbsp;</span></p>
+    <p style="margin:0pt"><span style="color:#333333; font-family:Helvetica; font-size:10.5pt">Asha GO Information and Technology LTD Shanghai</span><span style="color:#333333; font-family:Helvetica; font-size:10.5pt">&nbsp;</span></p>
     <p style="margin:0pt"><span style="color:#333333; font-family:SimSun; font-size:10.5pt">阿莎行（上海）信息科技有限公司</span></p>
     <p style="margin:0pt"><span style="color:#333333; font-family:Helvetica; font-size:10.5pt">&nbsp;</span></p>
     <p style="margin:0pt"><span style="color:#333333; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">Address</span></p>
@@ -21,7 +21,7 @@
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:10pt">E-Mail:</span><span style="color:#171717; font-family:Helvetica; font-size:10pt">&nbsp;</span><a style="color:#1155cc" href="mailto:info@ashago.com" target="_blank"><span style="color:#1155cc; font-family:Helvetica; font-size:10pt; text-decoration:underline">info@ashago.com</span></a></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:10pt">Website:</span><span style="color:#171717; font-family:Helvetica; font-size:10pt">&nbsp;</span><a style="color:#1155cc" href="http://www.ashago.com/" target="_blank"><span style="color:#1155cc; font-family:Helvetica; font-size:10pt; text-decoration:underline">http://www.ashago.com</span></a></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt">&nbsp;</span></p>
-    <p style="margin:0pt"><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">Date of last revision: </span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">July</span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">&nbsp;&nbsp;6th, 2020</span></p>
+    <p style="margin:0pt"><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">Date of last revision: </span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">July</span><span style="color:#222222; font-family:Helvetica-BoldOblique; font-size:10.5pt; font-style:italic; font-weight:bold">&nbsp;6th, 2020</span></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt">&nbsp;</span></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt">&nbsp;</span></p>
     <p style="margin:0pt"><span style="color:#171717; font-family:Helvetica; font-size:9pt; font-weight:bold">Terms of Use</span></p>

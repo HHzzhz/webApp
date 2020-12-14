@@ -57,6 +57,7 @@ module.exports = {
     { src: '@/plugins/vue-infinite-scroll.js', ssr: false },
     { src: '@/plugins/avatar.js', ssr: false },
     { src: '@/plugins/vue-swiper', ssr: false },
+    { src: '@/plugins/baidu.js', ssr: false },
   ],
   /*
   ** 客户端和服务端共享的环境变量
