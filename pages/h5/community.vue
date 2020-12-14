@@ -1,6 +1,11 @@
 <template>
-  <div id="community">
-    <a-row>
+  <div class="community">
+    <p class="detail">
+      Coming soon!
+    </p>
+    <p class="detail">
+    </p>
+    <!-- <a-row>
       <a-col :span="24">
         <div style="height:30px"></div>
       </a-col>
@@ -56,7 +61,7 @@
       <a-col :span="24">
         <div style="height:60px"></div>
       </a-col>
-    </a-row>
+    </a-row> -->
   </div>
 </template>
 <script>
@@ -71,7 +76,7 @@ export default {
   },
 }
 </script>
-<style>
+<style lang="less" scoped>
 #community {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -82,4 +87,13 @@ export default {
   line-height: 15px;
   font-size: 15px;
 }
+.community {
+  .detail {
+    margin-top: 5rem;
+    text-align: center;
+    color: #990000;
+    font-size: 3rem;
+  }
+}
+
 </style>
