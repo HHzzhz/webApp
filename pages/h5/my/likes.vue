@@ -18,7 +18,7 @@
               <a class="categoryContent" href="#">
                 <a-list itemLayout="vertical">
                   <a-list-item>
-                    <div class="content">
+                    <div class="content" @click="goDetail(item.blogId)">
                       <div
                         class="detail"
                         max-width="9%;"
@@ -79,6 +79,9 @@ export default {
       if (history.length > 1) {
         history.back();
       }
+    },
+    goDetail(id) {
+       this.$router.push('/blog/detail?blogId=' + id);
     },
     getLikeList (){
       this.$Server({

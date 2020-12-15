@@ -16,9 +16,8 @@
               <a class="categoryContent" href="#">
                 <a-list itemLayout="vertical">
                   <a-list-item>
-                    <div class="content">
+                    <div class="content" @click="goDetail(item.blogId)">
                       <div
-                        @click="goDetail(item.blogId)"
                         class="detail"
                         max-width="9%;"
                         style="word-break:break-all;"
