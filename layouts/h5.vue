@@ -130,7 +130,24 @@ export default {
           this.footer = false;
       } else {
           this.footer = true;
-      }
+      };
+      wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+          wx.updateAppMessageShareData({
+            title: 'Asha Go: Your China Platform', // 分享标题
+            desc: 'We aim to make your life in China easy and exciting', // 分享描述
+            imgUrl: '//www.ashago.com/_nuxt/img/Asha-Go-dark-circle-logo-no-text.9850928.png', // 分享图标
+            success: function () {
+              // 设置成功
+            }
+          });
+          wx.updateTimelineShareData({
+            title: 'Asha Go: Your China Platform', // 分享标题
+            imgUrl: '//www.ashago.com/_nuxt/img/Asha-Go-dark-circle-logo-no-text.9850928.png',
+            success: function () {
+              // 设置成功
+            }
+          });
+        });
   },
   mounted() {
     // window.addEventListener("scroll",()=>{

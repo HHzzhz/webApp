@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node server/index.js --watch server",
+    "dev": "nuxt",
     "build": "nuxt build",
     "development": "nuxt build && cross-env NODE_ENV=development node server/index.js",
     "production": "nuxt build && nuxt start",
