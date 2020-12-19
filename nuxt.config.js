@@ -15,15 +15,18 @@ module.exports = {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Asha Go',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     script: [
       { src: '/js/facebook.js' },
-      { src: '/js/wx.js' }
+      { src: '/js/common.js' },
+      { src: '/js/wx.js' },
+      { src: '//cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js'},
+      { src: '//res.wx.qq.com/open/js/jweixin-1.6.0.js'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -34,13 +37,14 @@ module.exports = {
   */
   css: [
     // 'ant-design-vue/lib/button/style/css',
-    'ant-design-vue/dist/antd.css',
+    'ant-design-vue/dist/antd.less',
     'quill/dist/quill.core.css',
     // for snow theme
     'quill/dist/quill.snow.css',
     // for bubble theme
     'quill/dist/quill.bubble.css',
-    '~/assets/main.css'
+    '~/assets/main.css',
+    'swiper/css/swiper.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -48,8 +52,13 @@ module.exports = {
   */
   plugins: [
     '@/plugins/antd-ui',
+    '@/plugins/vant-ui',
     '@/plugins/axios',
-    { src: '@/plugins/vue-quill-editor', ssr: false }
+    { src: '@/plugins/vue-quill-editor', ssr: false },
+    { src: '@/plugins/vue-infinite-scroll.js', ssr: false },
+    { src: '@/plugins/avatar.js', ssr: false },
+    { src: '@/plugins/vue-swiper', ssr: false },
+    { src: '@/plugins/baidu.js', ssr: false },
   ],
   /*
   ** 客户端和服务端共享的环境变量
@@ -57,22 +66,22 @@ module.exports = {
   env: {
     host_env: process.env.CODE_ENV
   },
+  router: {
+    middleware: 'user-agent'
+  },
   axios: {
     proxy: false,
   },
   proxy: {
+    '/': {
+      target: '//ashago-api.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+    },
     '/api': {
-      target: '//ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+      target: '//ashago-api.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
     },
     '/user': {
-      target: '//ashago-api-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
+      target: '//ashago-api.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com'
     },
-    // '/api': {
-    //   target: '//yapi.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com/mock/25'
-    // },
-    // '/user': {
-    //   target: '//yapi.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com/mock/25'
-    // }
   },
   /*
   ** Auto import components
@@ -99,6 +108,17 @@ module.exports = {
     extend (config, { isClient }) {
       // 客户端打包配置
       if (isClient) {
+      }
+    },
+    loaders: {
+      // 定制ant-design-vue全局主题
+      less: {
+        lessOptions: {
+          javascriptEnabled: true,
+          modifyVars: {
+            'primary-color': '#8D050B',
+          }
+        }
       }
     },
     vendor: ['axios']

@@ -1,38 +1,31 @@
 <template>
   <div class="container">
-    <img class="logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
-    <div class="title">Sign Up</div>
+
+    <img class="logo pointer" @click="goHome" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
+    <div class="title">Login</div>
     <a-form :form="form" @submit="handleSubmit" class="form">
       <a-form-item :validate-status="userNameError() ? 'error' : ''" :help="userNameError() || ''">
         <a-input
           v-decorator="[
-          'userName',
-          { rules: [{ required: true, message: 'Please input your username!' }] },
-        ]"
-          placeholder="Username"
-          size="large"
-        >
-        <!-- <a-input
-          v-decorator="[
           'email',
           {
             rules: [
-              { type: 'email', message: 'The input is not valid E-mail!' },
-              { required: true, message: 'Please input your email!' }
+              { type: 'email', message: 'Invalid email' },
+              { required: true, message: 'Email is required' }
             ]
           },
         ]"
-          placeholder="email"
+          placeholder="Email"
           size="large"
-        > -->
+        >
           <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
         </a-input>
       </a-form-item>
       <a-form-item :validate-status="passwordError() ? 'error' : ''" :help="passwordError() || ''">
         <a-input
           v-decorator="[
-          'token',
-          { rules: [{ required: true, message: 'Please input your Password!' }] },
+          'password',
+          { rules: [{ required: true, message: 'Please input your password' }] },
         ]"
           type="password"
           placeholder="Password"
@@ -43,16 +36,18 @@
       </a-form-item>
       <a-form-item>
         <a-button type="primary" html-type="submit" block :loading="loading" :disabled="hasErrors(form.getFieldsError())">
-          Log in
+          Login
         </a-button>
       </a-form-item>
       <div class="others">
-        <span>
+        <!-- <span>
           Other login methods
           <a-icon class="icon" type="facebook" @click="fbLogin"/>
           <a-icon class="icon" style="font-size: 24px" @click="wxLogin" type="wechat" />
-        </span>
-        <a-button class="register" type="link" @click="handleToRegister">Register</a-button>
+          <div id="login_container"> test</div>
+        </span> -->
+        <a-button class="register" type="link" @click="handleToRegister">Sign Up</a-button>
+        <a-button class="register" type="link" @click="handleToForgot">Forgot password?</a-button>
       </div>
     </a-form>
   </div>
@@ -67,6 +62,7 @@
     data () {
       return {
         loading: false,
+        show: false,
         form: this.$form.createForm(this, { name: 'horizontal_login' }),
         hasErrors: fieldsError => {
           return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -74,23 +70,42 @@
       }
     },
     mounted() {
+      // var obj = new WxLogin({
+      //   self_redirect:true,
+      //   id: "login_container",
+      //   appid: "wx2b4b189cd5930702",
+      //   scope: "snsapi_login",
+      //   redirect_uri: "http://ashago-dev.cc2dbe1fd91f042528f96dc27c2dba5fe.cn-zhangjiakou.alicontainer.com/",
+      //   state: "",
+      //   style: "",
+      //   href: ""
+      // });
       this.$nextTick(() => {
         // To disabled submit button at the beginning.
         this.form.validateFields();
       });
     },
     methods: {
+      showPopup() {
+        this.show = true;
+      },
       handleToRegister () {
         this.$router.push('/register');
       },
+      handleToForgot() {
+        this.$router.push('/findPassword');
+      },
+      goHome() {
+        this.$router.push('/');
+      },
       userNameError() {
         const { getFieldError, isFieldTouched } = this.form;
-        return isFieldTouched('userName') && getFieldError('userName');
+        return isFieldTouched('email') && getFieldError('email');
       },
       // Only show error after a field is touched.
       passwordError() {
         const { getFieldError, isFieldTouched } = this.form;
-        return isFieldTouched('token') && getFieldError('token');
+        return isFieldTouched('password') && getFieldError('password');
       },
       wxLogin() {
 
@@ -151,13 +166,15 @@
           url: 'user/login',
           method: 'post',
           data: {
-            token: encryption(values.token),
-            userId: values.userName
+            password: encryption(values.password),
+            email: values.email
           }
         }).then(res => {
-          if (res.code === 0) {
+          if (res.code == 0) {
             Cookie.set('_t', res.data.t);
+            Cookie.set('userId', res.data.userId);
             this.$store.commit('setToken', res.data.t);
+            this.$store.commit('setUserId', res.data.userId || '');
             this.$router.push('/')
           }
         }).finally(data => {
@@ -176,7 +193,7 @@
   align-items: center;
   overflow: auto;
   background: #f0f2f5;
-  background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
+//   background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
   background-repeat: no-repeat;
   background-position: center 110px;
   background-size: 100%;

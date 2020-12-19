@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <img class="logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
-    <div class="title">Register</div>
+    <img class="logo pointer" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
+    <div class="title">Sign Up</div>
     <a-form :form="form" @submit="handleSubmit" class="form">
       <a-form-item>
         <a-input
@@ -9,12 +9,12 @@
           'email',
           {
             rules: [
-              { type: 'email', message: 'The input is not valid E-mail!' },
-              { required: true, message: 'Please input your email!' }
+              { type: 'email', message: 'Invalid email' },
+              { required: true, message: 'Email is required' }
             ]
           },
         ]"
-          placeholder="email"
+          placeholder="Email"
           size="large"
         >
           <a-icon slot="prefix" type="mail" style="color:rgba(0,0,0,.25)" />
@@ -26,11 +26,11 @@
           'userName',
           {
             rules: [
-              { required: true, message: 'Please input your userName!' }
+              { required: true, message: 'Username is required' }
             ]
           },
         ]"
-          placeholder="userName"
+          placeholder="Username"
           size="large"
         >
           <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
@@ -39,10 +39,10 @@
       <a-form-item has-feedback>
         <a-input
           v-decorator="[
-          'token',
+          'password',
           {
             rules: [
-              { required: true, message: 'Please input your Password!' },
+              { required: true, message: 'Password is required' },
               { validator: validateToNextPassword }
             ]
           },
@@ -60,7 +60,7 @@
           'confirmPassword',
           {
             rules: [
-              { required: true, message: 'The passwords entered twice do not match!' },
+              { required: true, message: 'Passwords do not match' },
               { validator: compareToFirstPassword }
             ]
           }
@@ -73,25 +73,27 @@
           <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25)" />
         </a-input>
       </a-form-item>
-      <a-form-item>
+      <a-form-item style="margin-bottom: 0">
         <a-checkbox v-decorator="['agreement', { valuePropName: 'checked' }]">
           I have read the
           <a href="/agreement" target="_blank">
-            agreement
+            user agreement
           </a>
         </a-checkbox>
       </a-form-item>
-      <a-form-item>
+      <a-form-item style="margin-bottom: 0">
         <a-checkbox v-decorator="['subscribed', { valuePropName: 'checked' }]">
-          Subscribe to email？
+          Subscribe
         </a-checkbox>
       </a-form-item>
-      <a-form-item>
+      <a-form-item style="text-align: center; margin-bottom: 0">
         <a-button type="primary" html-type="submit" class="register" :loading="loading">
-          Register
+          Sign Up
         </a-button>
-        <a-button type="link" class="toLogin" @click="handleToLogin">Already have an account?</a-button>
       </a-form-item>
+      <div style="text-align: center">
+        <a-button type="link" class="toLogin" @click="handleToLogin">Already have an account?</a-button>
+      </div>
     </a-form>
   </div>
 </template>
@@ -124,7 +126,7 @@
       // Only show error after a field is touched.
       passwordError() {
         const { getFieldError, isFieldTouched } = this.form;
-        return isFieldTouched('token') && getFieldError('token');
+        return isFieldTouched('password') && getFieldError('password');
       },
       handleConfirmBlur(e) {
         const value = e.target.value;
@@ -143,8 +145,8 @@
       },
       compareToFirstPassword(rule, value, callback) {
         const form = this.form;
-        if (value && value !== form.getFieldValue('token')) {
-          callback('Two passwords that you enter is inconsistent!');
+        if (value && value !== form.getFieldValue('password')) {
+          callback('The passwords don\'t match');
         } else {
           callback();
         }
@@ -156,7 +158,7 @@
             console.log('Received values of form: ', values);
             if (!values.agreement) {
               // 请勾选协议
-              this.$message.warning('Please read and tick the agreement carefully.');
+              this.$message.warning('Please check the box to accept our user agreement.');
               return
             }
             this.postLogin(values);
@@ -164,18 +166,20 @@
         });
       },
       postLogin (values) {
+        console.log(values, '---');
         this.loading = true
         this.$Server({
           url: 'user/register',
           method: 'post',
           data: {
             email: values.email,
-            token: encryption(values['token']),
-            subscribed: !!values.subscribed
+            password: encryption(values['password']),
+            subscribed: !!values.subscribed,
+            userName: values.userName,
           }
         }).then(res => {
           this.loading = false;
-          if (res.code === 0) {
+          if (res.code == 0) {
 //            this.$store.commit('setToken', res.data.token);
             this.$router.push('/getStarted');
           }
@@ -193,7 +197,6 @@
     align-items: center;
     overflow: auto;
     background: #f0f2f5;
-    background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
     background-repeat: no-repeat;
     background-position: center 110px;
     background-size: 100%;
@@ -212,6 +215,7 @@
       width: 125px
     }
     .toLogin {
+      margin-top: 5px;
       width: 195px;
     }
   }
