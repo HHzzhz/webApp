@@ -25,7 +25,8 @@ module.exports = {
       { src: '/js/facebook.js' },
       { src: '/js/common.js' },
       { src: '/js/wx.js' },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js'}
+      { src: '//cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js'},
+      { src: '//res.wx.qq.com/open/js/jweixin-1.6.0.js'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

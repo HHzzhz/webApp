@@ -121,6 +121,7 @@ export default {
     watch: {
       '$route.query' (val, oldval) {
         this.keyWord = val.keyWord;
+        this.getData();
       }
     },
     methods:{
