@@ -127,7 +127,7 @@
                   <a-card>
                     <img slot="cover" alt="example" :src="item.img">
                     <a-card-meta>
-                      <div style="height: 54px; white-space: normal;" slot="title">{{item.title}}</div>
+                      <div style="height: 54px; white-space: normal; font-size: 15px;" slot="title">{{item.title}}</div>
                     </a-card-meta>
                   </a-card>
                 </a>
@@ -381,7 +381,7 @@ export default {
         }
       })
         .then(res => {
-          console.log(res, "handle submit res");
+          this.value = '';
           this.getComments(this.blogId);
         })
         .catch(err => {
