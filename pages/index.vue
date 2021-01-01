@@ -8,8 +8,9 @@
         @ready="onSwiperRedied"
         @clickSlide="onSwiperClickSlide"
         @slideChangeTransitionStart="onSwiperSlideChangeTransitionStart"
+        v-if="bannerData.length"
       >
-        <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index">
+        <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index" >
           <span @click="goDetail(item.blogId)">
             <img :src="item.cover" :alt="'banner'+index" >
             <div class="text">
@@ -83,7 +84,7 @@ export default {
           autoplay: {
             delay: 2000,
             stopOnLastSlide: false,
-            disableOnInteraction: true,
+            disableOnInteraction: false,
           },
           pagination: {
             el: '.swiper-pagination',
