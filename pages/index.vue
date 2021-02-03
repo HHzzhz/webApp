@@ -72,9 +72,31 @@ export default {
        context.redirect('/h5/')
      }
   },
+  head() {
+    return {
+      mate:[
+        {
+          'hid': 'fb-title',
+          'property':  'og:title',
+          'content':  'ashago',
+        },
+        {
+          'hid': 'fb-des',
+          'property':  'og:description',
+          'content': 'Your China Platform',
+        },
+        {
+          'hid': 'fb-img',
+          'property':  'og:image',
+          'content': `${this.shareImge}`
+        }
+      ]
+    }
+  },
   data() {
     return {
       baseUrl,
+      shareImge: '../assets/img/shareImage.jpg',
       swiperOptions: {
           loop: true,
           slidesPerView: 'auto',

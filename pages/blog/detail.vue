@@ -194,6 +194,9 @@ export default {
       this.getData(newValue);
     }
   },
+  asyncData(context) {
+    console.log(context.query, 'query-----');
+  },
   data() {
     return {
       loadingFlag: true,
@@ -212,6 +215,9 @@ export default {
       avatarImg: require("~/assets/img/Asha-Go-dark-circle-logo-no-text.png"),
       showShare: false,
       isPC: true,
+      shareTitle: '',
+      shareDes: '',
+      shareImge: '',
       options: [
         {
           name: "Facebook",
@@ -232,14 +238,38 @@ export default {
       ]
     };
   },
-  mounted() {
-    this.currentUrl = location.href;
+  head() {
+    return {
+      mate:[
+        {
+          'hid': 'fb-title',
+          'property':  'og:title',
+          'content':  `${this.shareTitle}`,
+        },
+        {
+          'hid': 'fb-des',
+          'property':  'og:description',
+          'content': `${this.shareDes}`,
+        },
+        {
+          'hid': 'fb-img',
+          'property':  'og:image',
+          'content': `${this.shareImge}`
+        }
+      ]
+    }
+  },
+  created() {
     this.getData(this.$route.query.blogId, function(data) {
       console.log(data, "DA");
     });
     this.getComments(this.$route.query.blogId);
     this.getLike(this.$route.query.blogId);
   },
+  mounted() {
+    this.currentUrl = location.href;
+  },
+
   methods: {
     getData(key, callback) {
       this.$Server({
@@ -274,6 +304,10 @@ export default {
 
           this.latestData = res.data;
           this.latestRealatedBlog = res.dataList;
+
+          this.shareTitle = res.data.title;
+          this.shareDes = res.data.content.slice(0, 33);
+          this.shareImge = res.data.img;
           var initHTML = res.data.html;
           var reg = /width="([ ]*[0-9])\w+" height="([ ]*[0-9])\w+"/g; //
           this.legacySystemHTML = initHTML.replace(
@@ -282,8 +316,6 @@ export default {
           );
           this.tagList = res.data.tag.split(",");
           this.blogId = key;
-          console.log(res.data, "DATA");
-          console.log(res.dataList, "DATALIST");
         })
         .finally(() => {
           this.loadingFlag = false;
