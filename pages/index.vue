@@ -8,8 +8,9 @@
         @ready="onSwiperRedied"
         @clickSlide="onSwiperClickSlide"
         @slideChangeTransitionStart="onSwiperSlideChangeTransitionStart"
+        v-if="bannerData.length"
       >
-        <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index">
+        <swiper-slide v-for="(item, index) in bannerData" :key="'banner'+ index" >
           <span @click="goDetail(item.blogId)">
             <img :src="item.cover" :alt="'banner'+index" >
             <div class="text">
@@ -71,9 +72,31 @@ export default {
        context.redirect('/h5/')
      }
   },
+  head() {
+    return {
+      mate:[
+        {
+          'hid': 'fb-title',
+          'property':  'og:title',
+          'content':  'ashago',
+        },
+        {
+          'hid': 'fb-des',
+          'property':  'og:description',
+          'content': 'Your China Platform',
+        },
+        {
+          'hid': 'fb-img',
+          'property':  'og:image',
+          'content': `${this.shareImge}`
+        }
+      ]
+    }
+  },
   data() {
     return {
       baseUrl,
+      shareImge: '../assets/img/shareImage.jpg',
       swiperOptions: {
           loop: true,
           slidesPerView: 'auto',
@@ -83,7 +106,7 @@ export default {
           autoplay: {
             delay: 2000,
             stopOnLastSlide: false,
-            disableOnInteraction: true,
+            disableOnInteraction: false,
           },
           pagination: {
             el: '.swiper-pagination',

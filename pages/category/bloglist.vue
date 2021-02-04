@@ -1,52 +1,52 @@
 <template>
   <div class="blog-list">
     <client-only>
-        <div class="articlelist" :bordered="false">
-          <a-card :bordered="false">
-            <a-spin tip="Loading..." v-show="loadingFlag"></a-spin>
-            <div v-show="!loadingFlag" v-if="latestData">
-              <a-list size="large" :bordered="false">
-                <a-list-item v-for="(item, index) in latestData" :key="'lastest'+ index">
-                  <div class="listcover" @click="goDetail(item.blogId)">
-                    <img
+      <div class="articlelist" :bordered="false">
+        <a-card :bordered="false">
+          <a-spin tip="Loading..." v-show="loadingFlag"></a-spin>
+          <div v-show="!loadingFlag" v-if="latestData">
+            <a-list size="large" :bordered="false">
+              <a-list-item v-for="(item, index) in latestData" :key="'lastest'+ index">
+                <div class="listcover" @click="goDetail(item.blogId)">
+                  <img
                       style="height: 200px; margin: -10px 0"
                       shape="square"
                       v-bind:src="item.img">
-                  </div>
-                    <a-list >
-                      <a-list-item>
-                        <a-list-item-meta v-bind:title="item.title">
-                          <div slot="description">
-                            <a-tag
-                              v-for="(tagName, tagIndex) in tagList[index]"
-                              :key="'lastest'+ tagIndex"
-                            >{{tagName}}</a-tag>
-                          </div>
-                        </a-list-item-meta>
-                        <div class="content">
-                          <div
-                            class="detail"
-                            max-width="9%;"
-                          >{{item.content.substring(0,200)}}...</div>
-                          <div class="author">
-                            <a-avatar
+                </div>
+                <a-list itemLayout="vertical">
+                  <a-list-item>
+                    <a-list-item-meta v-bind:title="item.title">
+                      <div slot="description">
+                        <a-tag
+                          v-for="(tagName, tagIndex) in tagList[index]"
+                          :key="'lastest'+ tagIndex"
+                        >{{tagName}}</a-tag>
+                      </div>
+                    </a-list-item-meta>
+                    <div class="content">
+                      <div
+                        class="detail"
+                        max-width="9%;"
+                      >{{item.content.substring(0,200)}}...</div>
+                      <div class="author">
+                        <a-avatar
                               style="margin:10px;"
                               size="small"
                               :src="item.avatar"
                             />
                             {{item.author}}
-                            <a-divider type="vertical"/>
-                            {{item.time}} read
-                          </div>
-                        </div>
-                      </a-list-item>
-                    </a-list>
-                </a-list-item>
-              </a-list>
-            </div>
-          </a-card>
-        </div>
-      </client-only>
+                        <a-divider type="vertical"/>
+                        {{item.time}} read
+                      </div>
+                    </div>
+                  </a-list-item>
+                </a-list>
+              </a-list-item>
+            </a-list>
+          </div>
+        </a-card>
+      </div>
+    </client-only>
   </div>
 </template>
 <script>
@@ -60,7 +60,7 @@ export default {
   name: "BlogList",
   props: ["type"],
   layout(context) {
-     return context.isMobile ? 'h5' : 'default';
+    return context.isMobile ? "h5" : "default";
   },
   watch: {
     "$route.query"(newValue) {
@@ -134,11 +134,12 @@ export default {
     },
     goDetail(blogId) {
       this.$router.push({
-        path: '/blog/detail',
+        path: "/blog/detail",
         query: {
           blogId: blogId
-      }});
-    },
+        }
+      });
+    }
   }
 };
 </script>
@@ -190,7 +191,7 @@ export default {
     @media (max-width: 992px) {
       padding: 0px;
       margin: 0px;
-    };
+    }
   }
 }
 </style>

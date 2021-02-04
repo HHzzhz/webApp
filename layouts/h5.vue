@@ -134,17 +134,6 @@ export default {
 
   },
   mounted() {
-    // window.addEventListener("scroll",()=>{
-    //   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    //     let offsetTop = document.querySelector('#menuContainer').offsetTop;
-    //     if (scrollTop > offsetTop) {
-    //         document.querySelector('#menuContainer').style.position="fixed";
-    //         document.querySelector('#menuContainer').style.top="0";
-    //     } else {
-    //         document.querySelector('#menuContainer').style.position="";
-    //         document.querySelector('#menuContainer').style.top="";
-    //     }
-    // })
     wx && wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
           wx.updateAppMessageShareData({
             title: 'Asha Go: Your China Platform', // 分享标题

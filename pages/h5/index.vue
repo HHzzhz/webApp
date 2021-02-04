@@ -333,6 +333,11 @@ export default {
           justify-content: center;
         }
       }
+      .content {
+        .detail {
+          word-break: normal !important;
+        }
+      }
   }
   .category {
     position: relative;

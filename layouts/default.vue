@@ -3,7 +3,7 @@
       <div class="header">
         <div class="header-container">
           <span class="header-left pointer" @click="goHome">
-            <img class="header-logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
+            <img  class="header-logo" src="../assets/img/Asha-Go-dark-circle-logo-no-text.png" alt="logo">
             <span class="logo-desc ">
               <span>ASHA GO</span>
               <span class="desc">Your China Platform</span>
